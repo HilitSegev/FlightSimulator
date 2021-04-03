@@ -8,19 +8,19 @@
     ".NETCoreApp,Version=v3.0": []
   },
   "packageFolders": {
-    "C:\\Users\\97254\\.nuget\\packages\\": {}
+    "C:\\Users\\yarde\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\97254\\Documents\\CS\\SecondYear\\סמסטר ב\\AdvProg2\\WPF\\WPF.csproj",
+      "projectUniqueName": "C:\\Users\\yarde\\Source\\Repos\\FlightSimulator\\WPF.csproj",
       "projectName": "WPF",
-      "projectPath": "C:\\Users\\97254\\Documents\\CS\\SecondYear\\סמסטר ב\\AdvProg2\\WPF\\WPF.csproj",
-      "packagesPath": "C:\\Users\\97254\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\97254\\Documents\\CS\\SecondYear\\סמסטר ב\\AdvProg2\\WPF\\obj\\",
+      "projectPath": "C:\\Users\\yarde\\Source\\Repos\\FlightSimulator\\WPF.csproj",
+      "packagesPath": "C:\\Users\\yarde\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\yarde\\Source\\Repos\\FlightSimulator\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\97254\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\yarde\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -32,6 +32,7 @@
       },
       "frameworks": {
         "netcoreapp3.0": {
+          "targetAlias": "netcoreapp3.0",
           "projectReferences": {}
         }
       },
@@ -43,6 +44,7 @@
     },
     "frameworks": {
       "netcoreapp3.0": {
+        "targetAlias": "netcoreapp3.0",
         "imports": [
           "net461",
           "net462",
@@ -53,6 +55,24 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[3.0.1, 3.0.1]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[3.0.3, 3.0.3]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[3.0.0, 3.0.0]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[3.0.0, 3.0.0]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
@@ -61,7 +81,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }
