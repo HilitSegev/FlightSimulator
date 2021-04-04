@@ -22,6 +22,22 @@ namespace WPF
                 model.PlaybackSpeedChanged(playbackSpeed);
             }
         }
+        public float VM_Rudder
+        {
+            get { return model.Rudder; }
+        }
+        public float VM_Throttle
+        {
+            get { return model.Throttle; }
+        }
+        public float VM_Aileron
+        {
+            get { return model.Aileron; }
+        }
+        public float VM_Elevator
+        {
+            get { return model.Elevator; }
+        }
 
         public ViewModel(IModel model)
         {
@@ -37,6 +53,7 @@ namespace WPF
 
         public void NotifyPropertyChanged(string propName)
         {
+            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }
 
         public void VM_sendCSV(OpenFileDialog csvFile)
