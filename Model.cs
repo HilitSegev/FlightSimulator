@@ -13,8 +13,7 @@ namespace WPF
         private OpenFileDialog csvFile;
         ITelnetClient telnetClient;
         volatile Boolean stop;
-        double playbackSpeed;
-        byte[][] view;
+        int playbackSpeed;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -35,20 +34,9 @@ namespace WPF
         }
         public void start()
         {
-            //string line = "";
-            //StreamReader sr = new StreamReader(csvFile.FileName);
-            //while (line != null)
-            //{
-            //    line = sr.ReadLine() + '\n';
-            //    if (line != null)
-            //    {
-            //        System.Diagnostics.Debug.WriteLine(line);
-            //    }
-            //}
-
             // open client connection
             telnetClient.connect("localhost", 5400);
-            
+
             // populate line
             StreamReader sr = new StreamReader(csvFile.FileName);
             string line = sr.ReadLine() + '\n';
@@ -58,7 +46,10 @@ namespace WPF
                 while (line != null)
                 {
                     telnetClient.write(line);
-                    Thread.Sleep(250);// read the data in 4Hz
+                    Thread.Sleep(playbackSpeed);// read the data in 4Hz
+
+                    // TODO: Remove
+                    System.Diagnostics.Debug.WriteLine("playbackSpeed: {0}", playbackSpeed);
 
                     // read new line
                     line = sr.ReadLine() + '\n';
@@ -77,16 +68,9 @@ namespace WPF
         {
             this.csvFile = csvFile;
             start();
-            // API connect
-            // API start
-        }
-        public byte[][] sendView()
-        {
-            byte[][] view = null;
-            return view;
         }
 
-        public void PlaybackSpeedChanged(double PlaybackSpeed)
+        public void PlaybackSpeedChanged(int PlaybackSpeed)
         {
             this.playbackSpeed = PlaybackSpeed;
         }

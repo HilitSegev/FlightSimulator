@@ -40,7 +40,6 @@ namespace WPF
             System.Diagnostics.Debug.WriteLine("Received: {0}", responseData);
 
             return responseData;
-
         }
 
         public void write(string command)

@@ -9,9 +9,16 @@
     <Grid>
         <Button Content="upload CSV" HorizontalAlignment="Left" Margin="239,71,0,0" VerticalAlignment="Top" Click="uploadCSVButton_Click"/>
         <TextBox Name="txtEditor" HorizontalAlignment="Left" Margin="41,71,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="172" Height="231"/>
-        <Image HorizontalAlignment="Left" Height="200" Margin="507,95,0,0" VerticalAlignment="Top" Width="200"/>
-        <Slider Maximum ="100" Minimum ="0" HorizontalAlignment="Left" Margin="507,335,0,0" VerticalAlignment="Top" Width="200" Value="{Binding VM_PlaybackSpeed}"/>
-        <TextBlock HorizontalAlignment="Left" Margin="507,75,0,0" Text="Simulator View:" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
-        <TextBlock HorizontalAlignment="Left" Margin="507,314,0,0" Text="Playback speed:" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
+        <Slider Maximum ="1000" Minimum ="0" HorizontalAlignment="Left" Margin="368,94,0,0" VerticalAlignment="Top" Width="200" Value="{Binding VM_PlaybackSpeed}" RenderTransformOrigin="0.5,0.5">
+            <Slider.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="180"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Slider.RenderTransform>
+        </Slider>
+        <TextBlock HorizontalAlignment="Left" Margin="368,73,0,0" Text="Playback speed:" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
     </Grid>
 </Window>

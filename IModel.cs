@@ -13,9 +13,7 @@ namespace WPF
         void disconnect();
         void start();
         public void getCSV(OpenFileDialog csvFile);
-        public byte[][] sendView();
-
-        public void PlaybackSpeedChanged(double PlaybackSpeed);
+        public void PlaybackSpeedChanged(int PlaybackSpeed);
 
     }
 }

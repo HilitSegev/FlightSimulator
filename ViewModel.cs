@@ -12,9 +12,8 @@ namespace WPF
     class ViewModel : INotifyPropertyChanged
     {
         private IModel model;
-        byte[][] VM_view;
-        private double playbackSpeed;
-        public double VM_PlaybackSpeed
+        private int playbackSpeed;
+        public int VM_PlaybackSpeed
         {
             get { return playbackSpeed; }
             set
@@ -27,7 +26,7 @@ namespace WPF
         public ViewModel(IModel model)
         {
             this.model = model;
-            this.playbackSpeed = 50;
+            this.playbackSpeed = 100;
             VM_PlaybackSpeed = playbackSpeed;
             model.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e) {
                 NotifyPropertyChanged("VM_" + e.PropertyName);
@@ -38,10 +37,6 @@ namespace WPF
 
         public void NotifyPropertyChanged(string propName)
         {
-            if (String.Equals(propName, "VM_gotCSVfile"))
-            {
-                this.VM_view = model.sendView();
-            }
         }
 
         public void VM_sendCSV(OpenFileDialog csvFile)
