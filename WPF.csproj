@@ -6,4 +6,20 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Resources\pauseButton.PNG" />
+    <None Remove="Resources\playButton.PNG" />
+    <None Remove="Resources\stopButton.PNG" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Collections.NonGeneric" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\pauseButton.PNG" />
+    <Resource Include="Resources\playButton.PNG" />
+    <Resource Include="Resources\stopButton.PNG" />
+  </ItemGroup>
+
 </Project>

@@ -33,5 +33,20 @@ namespace WPF
                 vm.VM_sendCSV(csvFile);
             }
         }
+
+        private void playButtonClick(object sender, RoutedEventArgs e)
+        {
+            vm.VM_playButtonClick();
+        }
+
+        private void pauseButtonClick(object sender, RoutedEventArgs e)
+        {
+            vm.VM_pauseButtonClick();
+        }
+
+        private void stopButtonClick(object sender, RoutedEventArgs e)
+        {
+            vm.VM_stopButtonClick();
+        }
     }
 }

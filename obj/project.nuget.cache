@@ -1,13 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "oDnb66KErO1wOMDWhcQ1Dqjvt4V6Xipi0EdPyKX1EaH7XKMAoV3/yCWtObT/9e6u+eOVPISiZGR+6+o2xF+d6Q==",
+  "dgSpecHash": "xdn4fGF9u0CM/5K1FmCGth95uunjQ6ZfneUZS0GswsM5DEZ+DP99QZS5MD27TnEtMY/8JJ0J8qycQEejj191ig==",
   "success": true,
-  "projectFilePath": "C:\\Users\\yarde\\source\\repos\\FlightSimulator\\WPF.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\yarde\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.0.3\\microsoft.netcore.app.host.win-x64.3.0.3.nupkg.sha512",
-    "C:\\Users\\yarde\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.0.1\\microsoft.aspnetcore.app.ref.3.0.1.nupkg.sha512",
-    "C:\\Users\\yarde\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\3.0.0\\microsoft.windowsdesktop.app.ref.3.0.0.nupkg.sha512",
-    "C:\\Users\\yarde\\.nuget\\packages\\microsoft.netcore.app.ref\\3.0.0\\microsoft.netcore.app.ref.3.0.0.nupkg.sha512"
-  ],
+  "projectFilePath": "C:\\Users\\97254\\Documents\\CS\\SecondYear\\סמסטר ב\\AdvProg2\\FlightSimulator\\FlightSimulator\\WPF.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }

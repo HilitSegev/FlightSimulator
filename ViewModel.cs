@@ -23,25 +23,58 @@ namespace WPF
             }
         }
 
+        private int currentRow;
+        public int VM_CurrentRow
+        {
+            get { return model.CurrentRow; }
+            set
+            {
+                model.CurrentRow = value;
+            }
+        }
+
+
         public ViewModel(IModel model)
         {
             this.model = model;
-            this.playbackSpeed = 100;
-            VM_PlaybackSpeed = playbackSpeed;
-            model.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e) {
+            model.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e)
+            {
                 NotifyPropertyChanged("VM_" + e.PropertyName);
             };
+
+            this.playbackSpeed = 100;
+            VM_PlaybackSpeed = playbackSpeed;
+
+            this.currentRow = 0;
+
+
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
         public void NotifyPropertyChanged(string propName)
         {
+            if (this.PropertyChanged != null)
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
         }
 
         public void VM_sendCSV(OpenFileDialog csvFile)
         {
             model.getCSV(csvFile);
+        }
+
+        public void VM_playButtonClick()
+        {
+            model.pause = false;
+        }
+        public void VM_pauseButtonClick()
+        {
+            model.pause = true;
+        }
+        public void VM_stopButtonClick()
+        {
+            model.pause = true;
+            model.CurrentRow = 0;
         }
     }
 }

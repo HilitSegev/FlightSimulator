@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
@@ -11,9 +12,23 @@ namespace WPF
     class Model : IModel
     {
         private OpenFileDialog csvFile;
+        List<String> rowsList;
+
+
         ITelnetClient telnetClient;
         volatile Boolean stop;
+        public Boolean pause { get; set; }
         int playbackSpeed;
+        int currentRow;
+        public int CurrentRow
+        {
+            get { return currentRow; }
+            set
+            {
+                currentRow = value;
+                NotifyPropertyChanged("CurrentRow");
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -27,6 +42,7 @@ namespace WPF
         {
             telnetClient.connect(ip, port);
         }
+
         public void disconnect()
         {
             stop = true;
@@ -37,22 +53,22 @@ namespace WPF
             // open client connection
             telnetClient.connect("localhost", 5400);
 
-            // populate line
-            StreamReader sr = new StreamReader(csvFile.FileName);
-            string line = sr.ReadLine() + '\n';
-
             new Thread(delegate ()
             {
-                while (line != null)
+                while ((!stop) && (currentRow < rowsList.Count))
                 {
-                    telnetClient.write(line);
-                    Thread.Sleep(playbackSpeed);// read the data in 4Hz
+                    while (pause)
+                    {
+                        continue;
+                    }
+                    telnetClient.write(rowsList[currentRow]);
+                    Thread.Sleep(playbackSpeed);
+                    CurrentRow++;
 
                     // TODO: Remove
                     System.Diagnostics.Debug.WriteLine("playbackSpeed: {0}", playbackSpeed);
 
                     // read new line
-                    line = sr.ReadLine() + '\n';
                 }
             }).Start();
 
@@ -67,12 +83,32 @@ namespace WPF
         public void getCSV(OpenFileDialog csvFile)
         {
             this.csvFile = csvFile;
+            this.rowsList = new List<string>();
+
+            // populate line
+            StreamReader sr = new StreamReader(csvFile.FileName);
+
+            // keep reading from file and send to server
+            string line = sr.ReadLine();
+
+            while (line != null)
+            {
+                rowsList.Add(line+'\n');
+
+                // read new line
+                line = sr.ReadLine();
+            }
             start();
         }
 
         public void PlaybackSpeedChanged(int PlaybackSpeed)
         {
             this.playbackSpeed = PlaybackSpeed;
+        }
+
+        public void currentRowChanged(int currentRow)
+        {
+            this.currentRow = currentRow;
         }
 
     }

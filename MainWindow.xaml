@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="475" Width="800">
     <Grid>
-        <Button Content="upload CSV" HorizontalAlignment="Left" Margin="239,71,0,0" VerticalAlignment="Top" Click="uploadCSVButton_Click"/>
-        <TextBox Name="txtEditor" HorizontalAlignment="Left" Margin="41,71,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="172" Height="231"/>
-        <Slider Maximum ="1000" Minimum ="0" HorizontalAlignment="Left" Margin="368,94,0,0" VerticalAlignment="Top" Width="200" Value="{Binding VM_PlaybackSpeed}" RenderTransformOrigin="0.5,0.5">
+        <Button Content="upload CSV" HorizontalAlignment="Left" Margin="216,10,0,0" VerticalAlignment="Top" Click="uploadCSVButton_Click"/>
+        <TextBox Name="txtEditor" HorizontalAlignment="Left" Margin="18,10,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="172" Height="20"/>
+        <Slider Maximum ="250" Minimum ="4" HorizontalAlignment="Left" Margin="368,94,0,0" VerticalAlignment="Top" Width="200" Value="{Binding VM_PlaybackSpeed}" RenderTransformOrigin="0.5,0.5">
             <Slider.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -20,5 +20,26 @@
             </Slider.RenderTransform>
         </Slider>
         <TextBlock HorizontalAlignment="Left" Margin="368,73,0,0" Text="Playback speed:" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
+        <Button HorizontalAlignment="Left" Margin="0,409,0,0" VerticalAlignment="Top" Height="25" Width="25" Background="#00DDDDDD">
+            <Image Source="playButton.png"/>
+        </Button>
+        <Button x:Name="playButton" HorizontalAlignment="Left" Margin="0,409,0,0" VerticalAlignment="Top" Height="25" Width="25" Background="#00DDDDDD" Click="playButtonClick">
+            <Image  Source="Resources/playButton.png"/>
+        </Button>
+        <Button x:Name="pauseButton" HorizontalAlignment="Left" Margin="25,409,0,0" VerticalAlignment="Top" Height="25" Width="25" Background="#00DDDDDD" Click="pauseButtonClick">
+            <Image Source="Resources/pauseButton.png" Visibility="Visible"/>
+        </Button>
+        <Button x:Name="stopButton" HorizontalAlignment="Left" Margin="50,409,0,0" VerticalAlignment="Top" Height="25" Width="25" Background="#00DDDDDD" Click="stopButtonClick">
+            <Image Source="Resources/stopButton.png"/>
+        </Button>
+        <Slider HorizontalAlignment="Left" Margin="80,412,0,0" VerticalAlignment="Top" Width="570" Value="{Binding VM_CurrentRow}" Maximum="2000"/>
+        <Label Content="00:00:00" HorizontalAlignment="Left" Margin="655,408,0,0" VerticalAlignment="Top"/>
+        <ComboBox HorizontalAlignment="Left" Margin="714,408,0,0" VerticalAlignment="Top" Width="76" SelectedIndex="1">
+            <Label Content="x0.5"/>
+            <Label Content="x1.0"/>
+            <Label Content="x1.5"/>
+            <Label Content="x2.0"/>
+            <Label Content="x2.5"/>
+        </ComboBox>
     </Grid>
 </Window>
