@@ -22,6 +22,12 @@ namespace WPF
         float Throttle2 { set; get; }
         float Aileron { set; get; }
         float Elevator { set; get; }
+        float Altitude { set; get; }
+        float Airspeed { set; get; }
+        float HeadingDeg { set; get; }
+        float Pitch { set; get; }
+        float Roll { set; get; }
+        float Yaw { set; get; }
 
         public void currentRowChanged(int currentRow);
 

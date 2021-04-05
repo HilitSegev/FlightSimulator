@@ -42,6 +42,30 @@ namespace WPF
         {
             get { return model.Elevator; }
         }
+        public float VM_Altitude
+        {
+            get { return model.Altitude; }
+        }
+        public float VM_Airspeed
+        {
+            get { return model.Airspeed; }
+        }
+        public float VM_HeadingDeg
+        {
+            get { return model.HeadingDeg; }
+        }
+        public float VM_Pitch
+        {
+            get { return model.Pitch; }
+        }
+        public float VM_Roll
+        {
+            get { return model.Roll; }
+        }
+        public float VM_Yaw
+        {
+            get { return model.Yaw; }
+        }
 
         private int currentRow;
         public int VM_CurrentRow

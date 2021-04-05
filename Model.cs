@@ -36,6 +36,12 @@ namespace WPF
         private float throttle2;
         private float aileron;
         private float elevator;
+        private float altitude;
+        private float airspeed;
+        private float headingDeg;
+        private float pitch;
+        private float roll;
+        private float yaw;
 
         public float Rudder
         {
@@ -82,6 +88,60 @@ namespace WPF
             set
             {
                 elevator = value;
+                OnPropertyChanged();
+            }
+        }
+        public float Altitude
+        {
+            get { return altitude; }
+            set
+            {
+                altitude = value;
+                OnPropertyChanged();
+            }
+        }
+        public float Airspeed
+        {
+            get { return airspeed; }
+            set
+            {
+                airspeed = value;
+                OnPropertyChanged();
+            }
+        }
+        public float HeadingDeg
+        {
+            get { return headingDeg; }
+            set
+            {
+                headingDeg = value;
+                OnPropertyChanged();
+            }
+        }
+        public float Pitch
+        {
+            get { return pitch; }
+            set
+            {
+                pitch = value;
+                OnPropertyChanged();
+            }
+        }
+        public float Roll
+        {
+            get { return roll; }
+            set
+            {
+                roll = value;
+                OnPropertyChanged();
+            }
+        }
+        public float Yaw
+        {
+            get { return yaw; }
+            set
+            {
+                yaw = value;
                 OnPropertyChanged();
             }
         }
@@ -167,9 +227,14 @@ namespace WPF
                         Throttle2 = float.Parse(parsedLine[getAttributeIdx("throttle", parse, 2)]);
                         Aileron = float.Parse(parsedLine[getAttributeIdx("aileron", parse, 1)]);
                         Elevator = float.Parse(parsedLine[getAttributeIdx("elevator", parse, 1)]);
+                        Altitude = float.Parse(parsedLine[getAttributeIdx("altitude-ft", parse, 1)]);
+                        Airspeed = float.Parse(parsedLine[getAttributeIdx("airspeed-kt", parse, 1)]);
+                        HeadingDeg = float.Parse(parsedLine[getAttributeIdx("heading-deg", parse, 1)]);
+                        Pitch = float.Parse(parsedLine[getAttributeIdx("pitch-deg", parse, 1)]);
+                        Roll = float.Parse(parsedLine[getAttributeIdx("roll-deg", parse, 1)]);
+                        Yaw = float.Parse(parsedLine[getAttributeIdx("side-slip-deg", parse, 1)]);
                     }
-
-
+                    
                     // TODO: Remove
                     System.Diagnostics.Debug.WriteLine("playbackSpeed: {0}", playbackSpeed);
 
