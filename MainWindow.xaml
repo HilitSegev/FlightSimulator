@@ -43,7 +43,9 @@
         </ComboBox>
         <Slider Maximum ="1" Minimum ="-1" HorizontalAlignment="Left" Margin="368,173,0,0" VerticalAlignment="Top" Width="200" Value="{Binding VM_Rudder, Mode=OneWay}" RenderTransformOrigin="0.5,0.5"/>
         <TextBlock HorizontalAlignment="Left" Margin="368,152,0,0" Text="Rudder:" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
-        <Slider Maximum ="1" Minimum ="0" HorizontalAlignment="Left" Margin="368,225,0,0" VerticalAlignment="Top" Width="200" Value="{Binding VM_Throttle, Mode=OneWay}" RenderTransformOrigin="0.5,0.5"/>
-        <TextBlock HorizontalAlignment="Left" Margin="368,204,0,0" Text="Throttle:" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
+        <Slider Maximum ="1" Minimum ="0" HorizontalAlignment="Left" Margin="368,225,0,0" VerticalAlignment="Top" Width="200" Value="{Binding VM_Throttle1, Mode=OneWay}" RenderTransformOrigin="0.5,0.5"/>
+        <TextBlock HorizontalAlignment="Left" Margin="368,204,0,0" Text="Throttle1:" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
+        <Slider Maximum ="1" Minimum ="0" HorizontalAlignment="Left" Margin="368,285,0,0" VerticalAlignment="Top" Width="200" Value="{Binding VM_Throttle2, Mode=OneWay}" RenderTransformOrigin="0.5,0.5"/>
+        <TextBlock HorizontalAlignment="Left" Margin="368,264,0,0" Text="Throttle2:" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
     </Grid>
 </Window>

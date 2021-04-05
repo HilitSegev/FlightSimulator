@@ -18,7 +18,8 @@ namespace WPF
         public void getCSV(OpenFileDialog csvFile);
         public void PlaybackSpeedChanged(int PlaybackSpeed);
         float Rudder { set; get; }
-        float Throttle { set; get; }
+        float Throttle1 { set; get; }
+        float Throttle2 { set; get; }
         float Aileron { set; get; }
         float Elevator { set; get; }
 

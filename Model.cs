@@ -32,7 +32,8 @@ namespace WPF
         }
         private int playbackSpeed;
         private float rudder;
-        private float throttle;
+        private float throttle1;
+        private float throttle2;
         private float aileron;
         private float elevator;
 
@@ -46,12 +47,22 @@ namespace WPF
             }
         }
 
-        public float Throttle
+        public float Throttle1
         {
-            get { return throttle; }
+            get { return throttle1; }
             set
             {
-                throttle = value;
+                throttle1 = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public float Throttle2
+        {
+            get { return throttle2; }
+            set
+            {
+                throttle2 = value;
                 OnPropertyChanged();
             }
         }
@@ -93,13 +104,18 @@ namespace WPF
         }
 
         // get attribute index
-        public int getAttributeIdx(string att, XmlNodeList attributeList)
+        public int getAttributeIdx(string att, XmlNodeList attributeList, int appearance)
         {
+            int appear = 0;
             for (int i = 0; i < attributeList.Count; i++)
             {
                 if (attributeList[i].InnerText == att)
                 {
-                    return i;
+                    appear++;
+                    if (appearance == appear)
+                    {
+                        return i;
+                    }
                 }
             }
 
@@ -141,19 +157,25 @@ namespace WPF
                     }
                     telnetClient.write(rowsList[currentRow]);
                     Thread.Sleep(playbackSpeed);
-                    CurrentRow++;
 
                     string[] parsedLine = parseLine(rowsList[currentRow]);
-                    Rudder = float.Parse(parsedLine[getAttributeIdx("rudder", parse)]);
-                    Throttle = float.Parse(parsedLine[getAttributeIdx("throttle", parse)]);
-                    Aileron = float.Parse(parsedLine[getAttributeIdx("aileron", parse)]);
-                    Elevator = float.Parse(parsedLine[getAttributeIdx("elevator", parse)]);
+
+                    if (parsedLine.Length > 1)
+                    {
+                        Rudder = float.Parse(parsedLine[getAttributeIdx("rudder", parse, 1)]);
+                        Throttle1 = float.Parse(parsedLine[getAttributeIdx("throttle", parse, 1)]);
+                        Throttle2 = float.Parse(parsedLine[getAttributeIdx("throttle", parse, 2)]);
+                        Aileron = float.Parse(parsedLine[getAttributeIdx("aileron", parse, 1)]);
+                        Elevator = float.Parse(parsedLine[getAttributeIdx("elevator", parse, 1)]);
+                    }
 
 
                     // TODO: Remove
                     System.Diagnostics.Debug.WriteLine("playbackSpeed: {0}", playbackSpeed);
 
                     // read new line
+                    CurrentRow++;
+
                 }
             }).Start();
         }

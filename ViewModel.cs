@@ -26,9 +26,13 @@ namespace WPF
         {
             get { return model.Rudder; }
         }
-        public float VM_Throttle
+        public float VM_Throttle1
         {
-            get { return model.Throttle; }
+            get { return model.Throttle1; }
+        }
+        public float VM_Throttle2
+        {
+            get { return model.Throttle2; }
         }
         public float VM_Aileron
         {
