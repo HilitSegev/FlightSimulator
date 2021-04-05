@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Runtime.CompilerServices;
-using System.Text;
 using System.Threading;
 using System.Xml;
 using Microsoft.Win32;
-
+using static WPF.Utilities;
 namespace WPF
 {
     class Model : IModel
@@ -42,7 +40,29 @@ namespace WPF
         private float pitch;
         private float roll;
         private float yaw;
+        private List<String> listOfFeatureNames;
+        private List<float> pointsSelectedFeature;
 
+
+        public List<String> ListOfFeatureNames
+        {
+            get { return listOfFeatureNames; }
+            set
+            {
+                listOfFeatureNames = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public List<float> PointsSelectedFeature
+        {
+            get { return pointsSelectedFeature; }
+            set
+            {
+                pointsSelectedFeature = value;
+                
+            }
+        }
         public float Rudder
         {
             get { return rudder; }
@@ -52,7 +72,6 @@ namespace WPF
                 OnPropertyChanged();
             }
         }
-
         public float Throttle1
         {
             get { return throttle1; }
@@ -62,7 +81,6 @@ namespace WPF
                 OnPropertyChanged();
             }
         }
-
         public float Throttle2
         {
             get { return throttle2; }
@@ -72,7 +90,6 @@ namespace WPF
                 OnPropertyChanged();
             }
         }
-
         public float Aileron
         {
             get { return aileron; }
@@ -154,14 +171,14 @@ namespace WPF
             stop = false;
         }
 
-        public XmlNodeList parseXML(string filePath)
-        {
-            XmlDocument xml = new XmlDocument();
-            xml.Load(filePath);
-            XmlNodeList names = xml.GetElementsByTagName("name");
+        //public XmlNodeList parseXML(string filePath)
+        //{
+        //    XmlDocument xml = new XmlDocument();
+        //    xml.Load(filePath);
+        //    XmlNodeList names = xml.GetElementsByTagName("name");
 
-            return names;
-        }
+        //    return names;
+        //}
 
         // get attribute index
         public int getAttributeIdx(string att, XmlNodeList attributeList, int appearance)
@@ -202,8 +219,13 @@ namespace WPF
         public void start()
         {
             // testing xmlParser
-            XmlNodeList parse = parseXML("playback_small.xml");
+            XmlNodeList parsedXML = parseXML("playback_small.xml");
 
+            PointsSelectedFeature = new List<float>();
+
+            // TEMP
+            int selected = 17;
+            
             // open client connection
             telnetClient.connect("localhost", 5400);
 
@@ -222,19 +244,21 @@ namespace WPF
 
                     if (parsedLine.Length > 1)
                     {
-                        Rudder = float.Parse(parsedLine[getAttributeIdx("rudder", parse, 1)]);
-                        Throttle1 = float.Parse(parsedLine[getAttributeIdx("throttle", parse, 1)]);
-                        Throttle2 = float.Parse(parsedLine[getAttributeIdx("throttle", parse, 2)]);
-                        Aileron = float.Parse(parsedLine[getAttributeIdx("aileron", parse, 1)]);
-                        Elevator = float.Parse(parsedLine[getAttributeIdx("elevator", parse, 1)]);
-                        Altitude = float.Parse(parsedLine[getAttributeIdx("altitude-ft", parse, 1)]);
-                        Airspeed = float.Parse(parsedLine[getAttributeIdx("airspeed-kt", parse, 1)]);
-                        HeadingDeg = float.Parse(parsedLine[getAttributeIdx("heading-deg", parse, 1)]);
-                        Pitch = float.Parse(parsedLine[getAttributeIdx("pitch-deg", parse, 1)]);
-                        Roll = float.Parse(parsedLine[getAttributeIdx("roll-deg", parse, 1)]);
-                        Yaw = float.Parse(parsedLine[getAttributeIdx("side-slip-deg", parse, 1)]);
+                        Rudder = float.Parse(parsedLine[getAttributeIdx("rudder", parsedXML, 1)]);
+                        Throttle1 = float.Parse(parsedLine[getAttributeIdx("throttle", parsedXML, 1)]);
+                        Throttle2 = float.Parse(parsedLine[getAttributeIdx("throttle", parsedXML, 2)]);
+                        Aileron = float.Parse(parsedLine[getAttributeIdx("aileron", parsedXML, 1)]);
+                        Elevator = float.Parse(parsedLine[getAttributeIdx("elevator", parsedXML, 1)]);
+                        Altitude = float.Parse(parsedLine[getAttributeIdx("altitude-ft", parsedXML, 1)]);
+                        Airspeed = float.Parse(parsedLine[getAttributeIdx("airspeed-kt", parsedXML, 1)]);
+                        HeadingDeg = float.Parse(parsedLine[getAttributeIdx("heading-deg", parsedXML, 1)]);
+                        Pitch = float.Parse(parsedLine[getAttributeIdx("pitch-deg", parsedXML, 1)]);
+                        Roll = float.Parse(parsedLine[getAttributeIdx("roll-deg", parsedXML, 1)]);
+                        Yaw = float.Parse(parsedLine[getAttributeIdx("side-slip-deg", parsedXML, 1)]);
                     }
-                    
+
+                    PointsSelectedFeature.Add(float.Parse(parsedLine[selected]));
+                    OnPropertyChanged();
                     // TODO: Remove
                     System.Diagnostics.Debug.WriteLine("playbackSpeed: {0}", playbackSpeed);
 

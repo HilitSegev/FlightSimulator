@@ -1,9 +1,9 @@
 ﻿using System.Windows;
-
+using OxyPlot;
 using System;
 using System.IO;
-using System.Windows;
 using Microsoft.Win32;
+using System.Collections.Generic;
 
 namespace WPF
 {
@@ -18,8 +18,17 @@ namespace WPF
         public MainWindow()
         {
             InitializeComponent();
+
+            // put feature names in the list for plots
+            List<String> featureNames = Utilities.getFeatureNamesList("playback_small.xml");
+            foreach (string name in featureNames) {
+                featureNamesList.Items.Add(name);
+            }
+
+
             vm = new ViewModel(new Model(new TelnetClient()));
             DataContext = vm;
+
         }
 
         private void uploadCSVButton_Click(object sender, RoutedEventArgs e)

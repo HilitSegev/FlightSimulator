@@ -77,6 +77,11 @@ namespace WPF
             }
         }
 
+        public List<float> VM_PointsSelectedFeature
+        {
+            get { return model.PointsSelectedFeature; }
+        }
+
 
         public ViewModel(IModel model)
         {

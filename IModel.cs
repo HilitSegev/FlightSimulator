@@ -28,6 +28,7 @@ namespace WPF
         float Pitch { set; get; }
         float Roll { set; get; }
         float Yaw { set; get; }
+        List<float> PointsSelectedFeature { get; set; }
 
         public void currentRowChanged(int currentRow);
 

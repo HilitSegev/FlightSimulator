@@ -3,9 +3,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:oxy="http://oxyplot.org/wpf"
         xmlns:local="clr-namespace:WPF"
         mc:Ignorable="d"
         Title="MainWindow" Height="475" Width="800">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FFFF8C8C" Offset="0.285"/>
+            <GradientStop Color="White" Offset="0.779"/>
+        </LinearGradientBrush>
+    </Window.Background>
     <Grid>
         <Button Content="upload CSV" HorizontalAlignment="Left" Margin="216,10,0,0" VerticalAlignment="Top" Click="uploadCSVButton_Click"/>
         <TextBox Name="txtEditor" HorizontalAlignment="Left" Margin="18,10,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="172" Height="20"/>
@@ -20,9 +27,6 @@
             </Slider.RenderTransform>
         </Slider>
         <TextBlock HorizontalAlignment="Left" Margin="25,55,0,0" Text="Playback speed:" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
-        <Button HorizontalAlignment="Left" Margin="0,409,0,0" VerticalAlignment="Top" Height="25" Width="25" Background="#00DDDDDD">
-            <Image Source="playButton.png"/>
-        </Button>
         <Button x:Name="playButton" HorizontalAlignment="Left" Margin="0,409,0,0" VerticalAlignment="Top" Height="25" Width="25" Background="#00DDDDDD" Click="playButtonClick">
             <Image  Source="Resources/playButton.png"/>
         </Button>
@@ -66,6 +70,16 @@
         <TextBlock HorizontalAlignment="Left" Margin="603,126,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Text="{Binding VM_Roll, Mode=OneWay, StringFormat=\{0\}°}"/>
         <TextBlock HorizontalAlignment="Left" Margin="508,147,0,0" Text="Yaw:" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
         <TextBlock HorizontalAlignment="Left" Margin="603,147,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Text="{Binding VM_Yaw, Mode=OneWay, StringFormat=\{0\}°}"/>
+
+        <ListBox x:Name="featureNamesList" HorizontalAlignment="Left" Margin="410,185,0,0" VerticalAlignment="Top" Width="148" SelectedIndex="0" Height="100"/>
+
+
+        <oxy:Plot Margin="563,181,65,120" Title="{Binding VM_Title}">
+            <oxy:Plot.Series>
+                <oxy:LineSeries ItemsSource="{Binding VM_PointsSelectedFeature}"/>
+            </oxy:Plot.Series>
+        </oxy:Plot>
+
         <Viewbox Margin="240,141,358,120">
             <Canvas  x:Name="Base" Margin="104,72,356,47" Width="340" Height="340">
                 <Ellipse HorizontalAlignment="Left" Height="340" VerticalAlignment="Top" Width="340">
@@ -178,7 +192,7 @@
                     </Canvas.RenderTransform>
                     <Canvas.Resources>
 
-                        <Storyboard x:Key="CenterKnob" Name="centerKnob" Completed="centerKnob_Completed">
+                        <Storyboard x:Key="CenterKnob" Name="centerKnob">
 
                             <DoubleAnimation Storyboard.TargetName="knobPosition"
                              Storyboard.TargetProperty="X" To="0" Duration="0:0:0.2">
