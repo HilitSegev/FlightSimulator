@@ -247,8 +247,8 @@ namespace WPF
                         Rudder = float.Parse(parsedLine[getAttributeIdx("rudder", parsedXML, 1)]);
                         Throttle1 = float.Parse(parsedLine[getAttributeIdx("throttle", parsedXML, 1)]);
                         Throttle2 = float.Parse(parsedLine[getAttributeIdx("throttle", parsedXML, 2)]);
-                        Aileron = float.Parse(parsedLine[getAttributeIdx("aileron", parsedXML, 1)]);
-                        Elevator = float.Parse(parsedLine[getAttributeIdx("elevator", parsedXML, 1)]);
+                        Aileron = 125 + (75 * float.Parse(parsedLine[getAttributeIdx("aileron", parsedXML, 1)]));
+                        Elevator = 125 + (75 * float.Parse(parsedLine[getAttributeIdx("elevator", parsedXML, 1)]));
                         Altitude = float.Parse(parsedLine[getAttributeIdx("altitude-ft", parsedXML, 1)]);
                         Airspeed = float.Parse(parsedLine[getAttributeIdx("airspeed-kt", parsedXML, 1)]);
                         HeadingDeg = float.Parse(parsedLine[getAttributeIdx("heading-deg", parsedXML, 1)]);

@@ -80,8 +80,8 @@
             </oxy:Plot.Series>
         </oxy:Plot>
 
-        <Viewbox Margin="240,141,358,120">
-            <Canvas  x:Name="Base" Margin="104,72,356,47" Width="340" Height="340">
+        <Viewbox Height="150" Width="150" Margin="225,141,375,118">
+            <Canvas  x:Name="Base" Width="340" Height="340">
                 <Ellipse HorizontalAlignment="Left" Height="340" VerticalAlignment="Top" Width="340">
                     <Ellipse.Fill>
                         <RadialGradientBrush>
@@ -122,7 +122,7 @@
                     </Path.RenderTransform>
                 </Path>
 
-                <Canvas  x:Name="Knob" VerticalAlignment="Top" HorizontalAlignment="Left" Width="0" Height="0" RenderTransformOrigin="0.5,0.5" Canvas.Left="125" Canvas.Top="125">
+                <Canvas  x:Name="Knob" VerticalAlignment="Top" HorizontalAlignment="Left" Width="0" Height="0" RenderTransformOrigin="0.5,0.5" Canvas.Left="{Binding VM_Aileron}" Canvas.Top="{Binding VM_Elevator}">
                     <!--<Ellipse x:Name="Shadow" HorizontalAlignment="Left" Height="88" VerticalAlignment="Top" Width="86" Fill="#52131212" Canvas.Left="22" Canvas.Top="18" />-->
                     <Ellipse x:Name="KnobBase" HorizontalAlignment="Left" Height="90" VerticalAlignment="Top" Width="90" RenderTransformOrigin="0.5,0.5" Canvas.Top="1">
                         <Ellipse.Fill>
