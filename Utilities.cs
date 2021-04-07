@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Xml;
-
 namespace WPF
 {
     public static class Utilities
     {
         public static XmlNodeList parseXML(string filePath)
         {
+            // TODO: READ ONLY INPUT (We read both input and output so the list contains duplicates)
             XmlDocument xml = new XmlDocument();
             xml.Load(filePath);
             XmlNodeList names = xml.GetElementsByTagName("name");
@@ -25,7 +24,11 @@ namespace WPF
             {
                 listOfFeaturesNames.Add(node.FirstChild.Value);
             }
+
+            
             return listOfFeaturesNames;
         }
     }
+
+
 }

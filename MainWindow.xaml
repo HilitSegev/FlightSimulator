@@ -36,7 +36,7 @@
         <Button x:Name="stopButton" HorizontalAlignment="Left" Margin="50,409,0,0" VerticalAlignment="Top" Height="25" Width="25" Background="#00DDDDDD" Click="stopButtonClick">
             <Image Source="Resources/stopButton.png"/>
         </Button>
-        <Slider HorizontalAlignment="Left" Margin="80,412,0,0" VerticalAlignment="Top" Width="570" Value="{Binding VM_CurrentRow}" Maximum="2000"/>
+        <Slider x:Name="timeSlider" HorizontalAlignment="Left" Margin="80,412,0,0" VerticalAlignment="Top" Width="570" Value="{Binding VM_CurrentRow}" Maximum="{Binding VM_NumOfCSVRows}" />
         <Label Content="00:00:00" HorizontalAlignment="Left" Margin="655,408,0,0" VerticalAlignment="Top"/>
         <ComboBox HorizontalAlignment="Left" Margin="714,408,0,0" VerticalAlignment="Top" Width="76" SelectedIndex="1">
             <Label Content="x0.5"/>
@@ -71,10 +71,10 @@
         <TextBlock HorizontalAlignment="Left" Margin="508,147,0,0" Text="Yaw:" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
         <TextBlock HorizontalAlignment="Left" Margin="603,147,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Text="{Binding VM_Yaw, Mode=OneWay, StringFormat=\{0\}°}"/>
 
-        <ListBox x:Name="featureNamesList" HorizontalAlignment="Left" Margin="410,185,0,0" VerticalAlignment="Top" Width="148" SelectedIndex="0" Height="100"/>
+        <ListBox x:Name="featureNamesList" HorizontalAlignment="Left" Margin="410,185,0,0" VerticalAlignment="Top" Width="148" SelectedIndex="{Binding VM_SelectedFeatureIndex}" Height="100"/>
 
 
-        <oxy:Plot Margin="563,181,65,120" Title="{Binding VM_Title}">
+        <oxy:Plot x:Name="SelectedFeaturePlot" Margin="563,181,65,120" Title="{Binding VM_Title}" InvalidateFlag="{Binding VM_InvalidateFlag}">
             <oxy:Plot.Series>
                 <oxy:LineSeries ItemsSource="{Binding VM_PointsSelectedFeature}"/>
             </oxy:Plot.Series>

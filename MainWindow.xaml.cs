@@ -25,7 +25,6 @@ namespace WPF
                 featureNamesList.Items.Add(name);
             }
 
-
             vm = new ViewModel(new Model(new TelnetClient()));
             DataContext = vm;
 
@@ -46,6 +45,7 @@ namespace WPF
         private void playButtonClick(object sender, RoutedEventArgs e)
         {
             vm.VM_playButtonClick();
+
         }
 
         private void pauseButtonClick(object sender, RoutedEventArgs e)

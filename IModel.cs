@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Text;
 
 using Microsoft.Win32;
+using OxyPlot;
 
 namespace WPF
 {
@@ -15,7 +16,7 @@ namespace WPF
         void connect(string ip, int port);
         void disconnect();
         void start();
-        public void getCSV(OpenFileDialog csvFile);
+        public int getCSV(OpenFileDialog csvFile);
         public void PlaybackSpeedChanged(int PlaybackSpeed);
         float Rudder { set; get; }
         float Throttle1 { set; get; }
@@ -27,8 +28,12 @@ namespace WPF
         float HeadingDeg { set; get; }
         float Pitch { set; get; }
         float Roll { set; get; }
+
+        public void SelectedFeatureChanged(int selectedFeatureIndex);
+
         float Yaw { set; get; }
-        List<float> PointsSelectedFeature { get; set; }
+        List<DataPoint> PointsSelectedFeature { get; set; }
+        int NumOfCSVRows { get; }
 
         public void currentRowChanged(int currentRow);
 

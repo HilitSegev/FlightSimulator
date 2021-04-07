@@ -4,15 +4,18 @@ using System.ComponentModel;
 using System.Text;
 
 using Microsoft.Win32;
-
-
+using OxyPlot;
 
 namespace WPF
 {
     class ViewModel : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
         private IModel model;
+        private int currentRow;
         private int playbackSpeed;
+        private int selectedFeatureIndex;
         public int VM_PlaybackSpeed
         {
             get { return playbackSpeed; }
@@ -22,6 +25,46 @@ namespace WPF
                 model.PlaybackSpeedChanged(playbackSpeed);
             }
         }
+
+        public int VM_SelectedFeatureIndex
+        {
+            get { return selectedFeatureIndex; }
+            set
+            {
+                selectedFeatureIndex = value;
+                model.SelectedFeatureChanged(selectedFeatureIndex);
+            }
+        }
+
+        public int VM_CurrentRow
+        {
+            get { return model.CurrentRow; }
+            set
+            {
+                model.CurrentRow = value;
+                model.PointsSelectedFeature = new List<DataPoint>();
+            }
+        }
+        public List<DataPoint> VM_PointsSelectedFeature
+        {
+            get
+            {
+                invalidateFlag++;
+                NotifyPropertyChanged("VM_InvalidateFlag");
+                return model.PointsSelectedFeature;
+            }
+        }
+        private int invalidateFlag;
+        private int numOfCSVRows;
+
+        public int VM_InvalidateFlag
+        {
+            get
+            {
+                return invalidateFlag;
+            }
+        }
+
         public float VM_Rudder
         {
             get { return model.Rudder; }
@@ -67,21 +110,18 @@ namespace WPF
             get { return model.Yaw; }
         }
 
-        private int currentRow;
-        public int VM_CurrentRow
+        public int VM_NumOfCSVRows
         {
-            get { return model.CurrentRow; }
+            get
+            {
+                return numOfCSVRows;
+            }
             set
             {
-                model.CurrentRow = value;
+                numOfCSVRows = value;
+                NotifyPropertyChanged("VM_NumOfCSVRows");
             }
         }
-
-        public List<float> VM_PointsSelectedFeature
-        {
-            get { return model.PointsSelectedFeature; }
-        }
-
 
         public ViewModel(IModel model)
         {
@@ -98,9 +138,6 @@ namespace WPF
 
 
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
         public void NotifyPropertyChanged(string propName)
         {
             if (this.PropertyChanged != null)
@@ -109,12 +146,11 @@ namespace WPF
             //this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
 
         }
-
         public void VM_sendCSV(OpenFileDialog csvFile)
         {
-            model.getCSV(csvFile);
-        }
+            VM_NumOfCSVRows = model.getCSV(csvFile);
 
+        }
         public void VM_playButtonClick()
         {
             model.pause = false;

@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Xml;
 using Microsoft.Win32;
+using OxyPlot;
 using static WPF.Utilities;
 namespace WPF
 {
@@ -13,7 +14,6 @@ namespace WPF
     {
         private OpenFileDialog csvFile;
         List<String> rowsList;
-
 
         ITelnetClient telnetClient;
         volatile Boolean stop;
@@ -29,6 +29,7 @@ namespace WPF
             }
         }
         private int playbackSpeed;
+        private int selectedFeatureIndex;
         private float rudder;
         private float throttle1;
         private float throttle2;
@@ -41,7 +42,7 @@ namespace WPF
         private float roll;
         private float yaw;
         private List<String> listOfFeatureNames;
-        private List<float> pointsSelectedFeature;
+        private List<DataPoint> pointsSelectedFeature;
 
 
         public List<String> ListOfFeatureNames
@@ -54,7 +55,7 @@ namespace WPF
             }
         }
 
-        public List<float> PointsSelectedFeature
+        public List<DataPoint> PointsSelectedFeature
         {
             get { return pointsSelectedFeature; }
             set
@@ -63,6 +64,18 @@ namespace WPF
                 
             }
         }
+
+        private int numOfCSVRows = 2000;
+        public int NumOfCSVRows
+        {
+            get { return numOfCSVRows; }
+            set
+            {
+                numOfCSVRows = value;
+                OnPropertyChanged();
+            }
+        }
+
         public float Rudder
         {
             get { return rudder; }
@@ -202,7 +215,7 @@ namespace WPF
         // split csv line by ","
         public string[] parseLine(string line)
         {
-            return line.Split(',');
+            return line.Replace("\n", "").Split(',');
         }
 
         public void connect(string ip, int port)
@@ -221,14 +234,14 @@ namespace WPF
             // testing xmlParser
             XmlNodeList parsedXML = parseXML("playback_small.xml");
 
-            PointsSelectedFeature = new List<float>();
-
-            // TEMP
-            int selected = 17;
+            PointsSelectedFeature = new List<DataPoint>();
             
             // open client connection
             telnetClient.connect("localhost", 5400);
 
+            // lastSelectedFeatureIndex to clean the plot
+            int lastSelectedFeatureIndex = selectedFeatureIndex;
+            int startOfPlotIndex = 0;
             new Thread(delegate ()
             {
                 while ((!stop) && (currentRow < rowsList.Count))
@@ -257,8 +270,16 @@ namespace WPF
                         Yaw = float.Parse(parsedLine[getAttributeIdx("side-slip-deg", parsedXML, 1)]);
                     }
 
-                    PointsSelectedFeature.Add(float.Parse(parsedLine[selected]));
-                    OnPropertyChanged();
+                    // identify change in selected feature
+                    if (lastSelectedFeatureIndex != selectedFeatureIndex)
+                    {
+                        startOfPlotIndex = currentRow;
+                        PointsSelectedFeature = new List<DataPoint>();
+                        lastSelectedFeatureIndex = selectedFeatureIndex;
+                    }
+
+                    PointsSelectedFeature.Add(new DataPoint(currentRow, float.Parse(parsedLine[selectedFeatureIndex])));
+                    OnPropertyChanged("PointsSelectedFeature");
                     // TODO: Remove
                     System.Diagnostics.Debug.WriteLine("playbackSpeed: {0}", playbackSpeed);
 
@@ -278,7 +299,7 @@ namespace WPF
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public void getCSV(OpenFileDialog csvFile)
+        public int getCSV(OpenFileDialog csvFile)
         {
             this.csvFile = csvFile;
             this.rowsList = new List<string>();
@@ -296,7 +317,10 @@ namespace WPF
                 // read new line
                 line = sr.ReadLine();
             }
+
+            
             start();
+            return rowsList.Count;
         }
 
         public void PlaybackSpeedChanged(int PlaybackSpeed)
@@ -307,6 +331,11 @@ namespace WPF
         public void currentRowChanged(int currentRow)
         {
             this.currentRow = currentRow;
+        }
+
+        public void SelectedFeatureChanged(int selectedFeatureIndex)
+        {
+            this.selectedFeatureIndex = selectedFeatureIndex;
         }
     }
 }
