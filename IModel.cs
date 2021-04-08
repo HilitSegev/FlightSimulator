@@ -8,7 +8,7 @@ using OxyPlot;
 
 namespace WPF
 {
-    interface IModel : INotifyPropertyChanged
+    public interface IModel : INotifyPropertyChanged
     {
         public int CurrentRow { get; set; }
         public Boolean pause { get; set; }

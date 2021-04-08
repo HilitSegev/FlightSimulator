@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="WPF.DashBoard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPF"
+             mc:Ignorable="d" Width="248" Height="150">
+    <Grid Height="150">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="89*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock HorizontalAlignment="Left" Margin="17,14,0,0" Text="Altimeter:" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
+        <TextBlock HorizontalAlignment="Left" Margin="112,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="126" Text="{Binding VM_Altitude, StringFormat = {}{0} feet, Mode=OneWay}"/>
+        <TextBlock HorizontalAlignment="Left" Margin="17,35,0,0" Text="Airspeed:" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
+        <TextBlock HorizontalAlignment="Left" Margin="112,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="126" Text="{Binding VM_Airspeed, Mode=OneWay, StringFormat=\{0\} knot}"/>
+        <TextBlock HorizontalAlignment="Left" Margin="17,56,0,0" Text="Flight Direction:" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
+        <TextBlock HorizontalAlignment="Left" Margin="112,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="126" Text="{Binding VM_HeadingDeg, Mode=OneWay, StringFormat=\{0\}°}"/>
+        <TextBlock HorizontalAlignment="Left" Margin="17,77,0,0" Text="Pitch:" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
+        <TextBlock HorizontalAlignment="Left" Margin="112,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="126" Text="{Binding VM_Pitch, Mode=OneWay, StringFormat=\{0\}°}"/>
+        <TextBlock HorizontalAlignment="Left" Margin="17,98,0,0" Text="Roll:" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
+        <TextBlock HorizontalAlignment="Left" Margin="112,98,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="126" Text="{Binding VM_Roll, Mode=OneWay, StringFormat=\{0\}°}"/>
+        <TextBlock HorizontalAlignment="Left" Margin="17,119,0,0" Text="Yaw:" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
+        <TextBlock HorizontalAlignment="Left" Margin="112,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="126" Text="{Binding VM_Yaw, Mode=OneWay, StringFormat=\{0\}°}"/>
+
+    </Grid>
+</UserControl>

@@ -1,20 +1,20 @@
 ﻿WPF
-
+1.0.0.0
 
 winexe
 C#
 .cs
-C:\Users\97254\Documents\CS\SecondYear\סמסטר ב\AdvProg2\FlightSimulator\FlightSimulator\obj\Debug\netcoreapp3.0\
+C:\Users\hensh\OneDrive - Technion\Documents\naama\beforeSeparation\obj\Debug\netcoreapp3.0\
 WPF
 none
 false
-TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_0
-C:\Users\97254\Documents\CS\SecondYear\סמסטר ב\AdvProg2\FlightSimulator\FlightSimulator\App.xaml
-11151548125
+TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_0;
+C:\Users\hensh\OneDrive - Technion\Documents\naama\beforeSeparation\App.xaml
+5-1627061405
 
-9-848162863
-194-38988153
-MainWindow.xaml;
+171513286127
+1941819497374
+DashBoard.xaml;Graphs.xaml;JoyStick.xaml;MainWindow.xaml;PlaybackSpeed.xaml;
 
 False
 

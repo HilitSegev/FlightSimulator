@@ -7,7 +7,33 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="DashBoard.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Graphs.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="JoyStick.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="PlaybackSpeed.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="DashBoard.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Graphs.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="JoyStick.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="PlaybackSpeed.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

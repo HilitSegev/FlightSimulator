@@ -14,6 +14,9 @@ namespace WPF
     {
 
         ViewModel vm;
+        DashBoardVM Dvm;
+        JoyStickVM JSvm;
+        PlaybackSpeedVM PSvm;
 
         public MainWindow()
         {
@@ -25,7 +28,15 @@ namespace WPF
                 featureNamesList.Items.Add(name);
             }
 
-            vm = new ViewModel(new Model(new TelnetClient()));
+            Model model = new Model(new TelnetClient());
+            vm = new ViewModel(model);
+            Dvm = new DashBoardVM(model);
+            dashBoard.VM_DashBoard = Dvm;
+            JSvm = new JoyStickVM(model);
+            joyStick.VM_JoyStick = JSvm;
+            PSvm = new PlaybackSpeedVM(model);
+            playbackSpeed.VM_PlaybackSpeed = PSvm;
+            //vm = new ViewModel(new Model(new TelnetClient()));
             DataContext = vm;
 
         }

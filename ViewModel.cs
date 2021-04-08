@@ -14,17 +14,17 @@ namespace WPF
 
         private IModel model;
         private int currentRow;
-        private int playbackSpeed;
+        //private int playbackSpeed;
         private int selectedFeatureIndex;
-        public int VM_PlaybackSpeed
-        {
-            get { return playbackSpeed; }
-            set
-            {
-                playbackSpeed = value;
-                model.PlaybackSpeedChanged(playbackSpeed);
-            }
-        }
+        //public int VM_PlaybackSpeed
+        //{
+        //    get { return playbackSpeed; }
+        //    set
+        //    {
+        //        playbackSpeed = value;
+        //        model.PlaybackSpeedChanged(playbackSpeed);
+        //    }
+        //}
 
         public int VM_SelectedFeatureIndex
         {
@@ -65,50 +65,26 @@ namespace WPF
             }
         }
 
-        public float VM_Rudder
-        {
-            get { return model.Rudder; }
-        }
-        public float VM_Throttle1
-        {
-            get { return model.Throttle1; }
-        }
-        public float VM_Throttle2
-        {
-            get { return model.Throttle2; }
-        }
-        public float VM_Aileron
-        {
-            get { return model.Aileron; }
-        }
-        public float VM_Elevator
-        {
-            get { return model.Elevator; }
-        }
-        public float VM_Altitude
-        {
-            get { return model.Altitude; }
-        }
-        public float VM_Airspeed
-        {
-            get { return model.Airspeed; }
-        }
-        public float VM_HeadingDeg
-        {
-            get { return model.HeadingDeg; }
-        }
-        public float VM_Pitch
-        {
-            get { return model.Pitch; }
-        }
-        public float VM_Roll
-        {
-            get { return model.Roll; }
-        }
-        public float VM_Yaw
-        {
-            get { return model.Yaw; }
-        }
+        //public float VM_Rudder
+        //{
+        //    get { return model.Rudder; }
+        //}
+        //public float VM_Throttle1
+        //{
+        //    get { return model.Throttle1; }
+        //}
+        //public float VM_Throttle2
+        //{
+        //    get { return model.Throttle2; }
+        //}
+        //public float VM_Aileron
+        //{
+        //    get { return model.Aileron; }
+        //}
+        //public float VM_Elevator
+        //{
+        //    get { return model.Elevator; }
+        //}
 
         public int VM_NumOfCSVRows
         {
@@ -131,8 +107,8 @@ namespace WPF
                 NotifyPropertyChanged("VM_" + e.PropertyName);
             };
 
-            this.playbackSpeed = 100;
-            VM_PlaybackSpeed = playbackSpeed;
+            //this.playbackSpeed = 100;
+            //VM_PlaybackSpeed = playbackSpeed;
 
             this.currentRow = 0;
 
