@@ -10,9 +10,15 @@
     <Grid>
         <ListBox x:Name="featureNamesList" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="148" Height="190" SelectedIndex="{Binding VM_SelectedFeatureIndex}"/>
 
-        <oxy:Plot x:Name="SelectedFeaturePlot" Margin="163,10,54,22" Height="190" Width="190"  InvalidateFlag="{Binding VM_InvalidateFlag}">
+        <oxy:Plot x:Name="SelectedFeaturePlot" Margin="163,10,142,111"  InvalidateFlag="{Binding VM_InvalidateFlag}">
             <oxy:Plot.Series>
                 <oxy:LineSeries ItemsSource="{Binding VM_PointsSelectedFeature}"/>
+            </oxy:Plot.Series>
+        </oxy:Plot>
+
+        <oxy:Plot x:Name="correlatedFeaturePlot" Margin="270,10,32,111"  InvalidateFlag="{Binding VM_InvalidateFlag}">
+            <oxy:Plot.Series>
+                <oxy:LineSeries ItemsSource="{Binding VM_PointsCorrelatedFeature}"/>
             </oxy:Plot.Series>
         </oxy:Plot>
 

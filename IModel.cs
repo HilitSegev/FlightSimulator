@@ -34,6 +34,7 @@ namespace WPF
         float Yaw { set; get; }
         List<DataPoint> PointsSelectedFeature { get; set; }
         int NumOfCSVRows { get; }
+        List<DataPoint> PointsCorrelatedFeature { get; set; }
 
         public void currentRowChanged(int currentRow);
 

@@ -1,17 +1,19 @@
-﻿using System;
+﻿using MathNet.Numerics.Statistics;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
 namespace WPF
 {
-    class TimeSeries
+    public class TimeSeries
     {
         private List<List<Double>> ts;
+        public List<int> highestCorrelationInds;
         public TimeSeries(string csvPath)
         {
             this.ts = new List<List<Double>>();
-
+            this.highestCorrelationInds = new List<int>();
             // populate line
             StreamReader sr = new StreamReader(csvPath);
 
@@ -75,6 +77,32 @@ namespace WPF
                 col.Add(this.getRow(j)[i]);
             }
             return col;
+        }
+
+        public int BestCorrelation(int index)
+        {
+            Double maxCorr = -1;
+            int maxCorrIdx = 0;
+            Double currentCorr;
+
+            for (int i = 0; i < this.getNumOfColumns(); i++)
+            {
+                currentCorr = Correlation.Pearson(this.getColumn(index), this.getColumn(i));
+                if (currentCorr > maxCorr && i != index)
+                {
+                    maxCorr = currentCorr;
+                    maxCorrIdx = i;
+                }
+            }
+            return maxCorrIdx;
+        }
+
+        public void setHighestCorrelations()
+        {
+            for (int i = 0; i < this.getNumOfColumns(); i++)
+            {
+                highestCorrelationInds.Add(this.BestCorrelation(i));
+            }
         }
     }
 }

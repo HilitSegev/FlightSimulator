@@ -34,6 +34,16 @@ namespace WPF
             }
         }
 
+        public List<DataPoint> VM_PointsCorrelatedFeature
+        {
+            get
+            {
+                invalidateFlag++;
+                NotifyPropertyChanged("VM_InvalidateFlag");
+                return model.PointsCorrelatedFeature;
+            }
+        }
+
         public int VM_InvalidateFlag
         {
             get

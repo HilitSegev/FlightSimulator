@@ -43,6 +43,8 @@ namespace WPF
             {
                 model.CurrentRow = value;
                 model.PointsSelectedFeature = new List<DataPoint>();
+                model.PointsCorrelatedFeature = new List<DataPoint>();
+
             }
         }
         //public List<DataPoint> VM_PointsSelectedFeature

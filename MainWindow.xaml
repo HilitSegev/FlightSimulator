@@ -31,7 +31,7 @@
             <Image Source="Resources/stopButton.png"/>
         </Button>
         <Slider x:Name="timeSlider" HorizontalAlignment="Left" Margin="80,412,0,0" VerticalAlignment="Top" Width="570" Value="{Binding VM_CurrentRow}" Maximum="{Binding VM_NumOfCSVRows}" />
-        <Label Content="00:00:00" HorizontalAlignment="Left" Margin="655,408,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding VM_CurrentRow}" HorizontalAlignment="Left" Margin="655,408,0,0" VerticalAlignment="Top"/>
         <ComboBox HorizontalAlignment="Left" Margin="714,408,0,0" VerticalAlignment="Top" Width="76" SelectedIndex="1">
             <Label Content="x0.5"/>
             <Label Content="x1.0"/>

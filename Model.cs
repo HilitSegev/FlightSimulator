@@ -43,6 +43,7 @@ namespace WPF
         private float yaw;
         private List<String> listOfFeatureNames;
         private List<DataPoint> pointsSelectedFeature;
+        private List<DataPoint> pointsCorrelatedFeature;
 
 
         public List<String> ListOfFeatureNames
@@ -62,6 +63,16 @@ namespace WPF
             {
                 pointsSelectedFeature = value;
                 
+            }
+        }
+
+        public List<DataPoint> PointsCorrelatedFeature
+        {
+            get { return pointsCorrelatedFeature; }
+            set
+            {
+                pointsCorrelatedFeature = value;
+
             }
         }
 
@@ -226,7 +237,7 @@ namespace WPF
             XmlNodeList parsedXML = parseXML("playback_small.xml");
 
             PointsSelectedFeature = new List<DataPoint>();
-            
+            PointsCorrelatedFeature = new List<DataPoint>();
             // open client connection
             telnetClient.connect("localhost", 5400);
 
@@ -266,11 +277,14 @@ namespace WPF
                     {
                         startOfPlotIndex = currentRow;
                         PointsSelectedFeature = new List<DataPoint>();
+                        PointsCorrelatedFeature = new List<DataPoint>();
                         lastSelectedFeatureIndex = selectedFeatureIndex;
                     }
 
                     PointsSelectedFeature.Add(new DataPoint(currentRow, float.Parse(parsedLine[selectedFeatureIndex])));
+                    PointsCorrelatedFeature.Add(new DataPoint(currentRow, float.Parse(parsedLine[rowsList.highestCorrelationInds[selectedFeatureIndex]])));
                     OnPropertyChanged("PointsSelectedFeature");
+                    OnPropertyChanged("PointsCorrelatedFeature");
                     // TODO: Remove
                     System.Diagnostics.Debug.WriteLine("playbackSpeed: {0}", playbackSpeed);
 
@@ -294,7 +308,7 @@ namespace WPF
         {
             this.csvFile = csvFile;
             this.rowsList = new TimeSeries(csvFile.FileName);
-
+            this.rowsList.setHighestCorrelations();
             
             start();
             return rowsList.getNumOfRows();

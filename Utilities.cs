@@ -25,40 +25,10 @@ namespace WPF
             {
                 listOfFeaturesNames.Add(node.FirstChild.Value);
             }
-
-
             return listOfFeaturesNames;
         }
 
-        public static List<Double> getColumn(List<String> rowsList, int idx)
-        {
-            List<Double> column = new List<Double>();
-            foreach (String row in rowsList)
-            {
-                column.Add(Double.Parse(row.Split(",")[idx]));
-            }
-            return column;
-        }
-
-        public static int bestCorrelation(List<String> rowsList, int index)
-        {
-            Double maxCorr = -1;
-            int maxCorrIdx = 0;
-            Double currentCorr;
-            int numOfRows = rowsList.Count;
-            int numOfColumns = rowsList[0].Split(",").Length;
-
-            for (int i = 0; i < numOfColumns; i++)
-            {
-                currentCorr = Correlation.Pearson(getColumn(rowsList, index), getColumn(rowsList, i));
-                if (currentCorr > maxCorr && i != index)
-                {
-                    maxCorr = currentCorr;
-                    maxCorrIdx = i;
-                }
-            }
-            return maxCorrIdx;
-        }
+        
     }
 
 
