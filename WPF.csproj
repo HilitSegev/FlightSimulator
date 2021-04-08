@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="playback_small.xml" />
     <Resource Include="Resources\pauseButton.PNG" />
     <Resource Include="Resources\playButton.PNG" />
     <Resource Include="Resources\stopButton.PNG" />

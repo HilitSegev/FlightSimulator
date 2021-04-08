@@ -28,3 +28,4 @@ C:\Users\yarde\Source\Repos\FlightSimulator\obj\Debug\netcoreapp3.0\WPF.csproj.C
 C:\Users\yarde\Source\Repos\FlightSimulator\obj\Debug\netcoreapp3.0\WPF.dll
 C:\Users\yarde\Source\Repos\FlightSimulator\obj\Debug\netcoreapp3.0\WPF.pdb
 C:\Users\yarde\Source\Repos\FlightSimulator\obj\Debug\netcoreapp3.0\WPF.genruntimeconfig.cache
+C:\Users\yarde\Source\Repos\FlightSimulator\obj\Debug\netcoreapp3.0\WPF.csprojAssemblyReference.cache

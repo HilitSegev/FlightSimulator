@@ -55,6 +55,6 @@
         <DashBoard:DashBoard x:Name="dashBoard" Margin="452,10,10,272"/>
         <JoyStick:JoyStick x:Name="joyStick" Margin="-20,159,390,71"/>
         <PlaybackSpeed:PlaybackSpeed x:Name="playbackSpeed" Margin="10,67,551,305"/>
-        <Graphs:Graphs x:Name="graphs"/>
+        <Graphs:Graphs x:Name="graphs" Height="220" Width="400" Margin="390,179,10,80"/>
     </Grid>
 </Window>
