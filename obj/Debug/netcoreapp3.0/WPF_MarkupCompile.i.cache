@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\hensh\OneDrive - Technion\Documents\naama\beforeSeparation\obj\Debug\netcoreapp3.0\
+C:\Users\yarde\Source\Repos\FlightSimulator\obj\Debug\netcoreapp3.0\
 WPF
 none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_0;
-C:\Users\hensh\OneDrive - Technion\Documents\naama\beforeSeparation\App.xaml
-5-1627061405
+C:\Users\yarde\Source\Repos\FlightSimulator\App.xaml
+5573449916
 
-171513286127
-1941819497374
+18-718943329
+194462813775
 DashBoard.xaml;Graphs.xaml;JoyStick.xaml;MainWindow.xaml;PlaybackSpeed.xaml;
 
-False
+True
 

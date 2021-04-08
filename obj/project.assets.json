@@ -4585,19 +4585,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\hensh\\.nuget\\packages\\": {}
+    "C:\\Users\\yarde\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\hensh\\OneDrive - Technion\\Documents\\naama\\beforeSeparation\\WPF.csproj",
+      "projectUniqueName": "C:\\Users\\yarde\\Source\\Repos\\FlightSimulator\\WPF.csproj",
       "projectName": "WPF",
-      "projectPath": "C:\\Users\\hensh\\OneDrive - Technion\\Documents\\naama\\beforeSeparation\\WPF.csproj",
-      "packagesPath": "C:\\Users\\hensh\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\hensh\\OneDrive - Technion\\Documents\\naama\\beforeSeparation\\obj\\",
+      "projectPath": "C:\\Users\\yarde\\Source\\Repos\\FlightSimulator\\WPF.csproj",
+      "packagesPath": "C:\\Users\\yarde\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\yarde\\Source\\Repos\\FlightSimulator\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\hensh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\yarde\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4668,7 +4668,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

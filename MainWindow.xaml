@@ -8,6 +8,7 @@
         xmlns:DashBoard="clr-namespace:WPF"
         xmlns:JoyStick="clr-namespace:WPF"
         xmlns:PlaybackSpeed="clr-namespace:WPF"
+        xmlns:Graphs="clr-namespace:WPF"
         mc:Ignorable="d"
         Title="MainWindow" Height="475" Width="800">
     <Window.Background>
@@ -54,5 +55,6 @@
         <DashBoard:DashBoard x:Name="dashBoard" Margin="452,10,10,272"/>
         <JoyStick:JoyStick x:Name="joyStick" Margin="-20,159,390,71"/>
         <PlaybackSpeed:PlaybackSpeed x:Name="playbackSpeed" Margin="10,67,551,305"/>
+        <Graphs:Graphs x:Name="graphs"/>
     </Grid>
 </Window>

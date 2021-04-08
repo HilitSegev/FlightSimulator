@@ -15,7 +15,7 @@ namespace WPF
         private IModel model;
         private int currentRow;
         //private int playbackSpeed;
-        private int selectedFeatureIndex;
+        // private int selectedFeatureIndex;
         //public int VM_PlaybackSpeed
         //{
         //    get { return playbackSpeed; }
@@ -26,15 +26,15 @@ namespace WPF
         //    }
         //}
 
-        public int VM_SelectedFeatureIndex
-        {
-            get { return selectedFeatureIndex; }
-            set
-            {
-                selectedFeatureIndex = value;
-                model.SelectedFeatureChanged(selectedFeatureIndex);
-            }
-        }
+        //public int VM_SelectedFeatureIndex
+        //{
+        //    get { return selectedFeatureIndex; }
+        //    set
+        //    {
+        //        selectedFeatureIndex = value;
+        //        model.SelectedFeatureChanged(selectedFeatureIndex);
+        //    }
+        //}
 
         public int VM_CurrentRow
         {
@@ -45,25 +45,25 @@ namespace WPF
                 model.PointsSelectedFeature = new List<DataPoint>();
             }
         }
-        public List<DataPoint> VM_PointsSelectedFeature
-        {
-            get
-            {
-                invalidateFlag++;
-                NotifyPropertyChanged("VM_InvalidateFlag");
-                return model.PointsSelectedFeature;
-            }
-        }
-        private int invalidateFlag;
+        //public List<DataPoint> VM_PointsSelectedFeature
+        //{
+        //    get
+        //    {
+        //        invalidateFlag++;
+        //        NotifyPropertyChanged("VM_InvalidateFlag");
+        //        return model.PointsSelectedFeature;
+        //    }
+        //}
+        // private int invalidateFlag;
         private int numOfCSVRows;
 
-        public int VM_InvalidateFlag
-        {
-            get
-            {
-                return invalidateFlag;
-            }
-        }
+        //public int VM_InvalidateFlag
+        //{
+        //    get
+        //    {
+        //        return invalidateFlag;
+        //    }
+        //}
 
         //public float VM_Rudder
         //{

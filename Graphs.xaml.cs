@@ -18,9 +18,27 @@ namespace WPF
     /// </summary>
     public partial class Graphs : UserControl
     {
+        GraphsVM Gvm;
         public Graphs()
         {
             InitializeComponent();
+
+            // put feature names in the list for plots
+            List<String> featureNames = Utilities.getFeatureNamesList("playback_small.xml");
+            foreach (string name in featureNames)
+            {
+                featureNamesList.Items.Add(name);
+            }
+        }
+
+        public GraphsVM VM_Graphs
+        {
+            get { return Gvm; }
+            set
+            {
+                Gvm = value;
+                this.DataContext = Gvm;
+            }
         }
     }
 }

@@ -19,7 +19,7 @@
     </frameworkReferences>
   </metadata>
   <files>
-    <file src="C:\Users\hensh\OneDrive - Technion\Documents\naama\beforeSeparation\bin\Debug\netcoreapp3.0\WPF.runtimeconfig.json" target="lib\netcoreapp3.0\WPF.runtimeconfig.json" />
-    <file src="C:\Users\hensh\OneDrive - Technion\Documents\naama\beforeSeparation\bin\Debug\netcoreapp3.0\WPF.dll" target="lib\netcoreapp3.0\WPF.dll" />
+    <file src="C:\Users\yarde\Source\Repos\FlightSimulator\bin\Debug\netcoreapp3.0\WPF.runtimeconfig.json" target="lib\netcoreapp3.0\WPF.runtimeconfig.json" />
+    <file src="C:\Users\yarde\Source\Repos\FlightSimulator\bin\Debug\netcoreapp3.0\WPF.dll" target="lib\netcoreapp3.0\WPF.dll" />
   </files>
 </package>
