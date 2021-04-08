@@ -2,6 +2,15 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.0": {
+      "MathNet.Numerics/4.15.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/MathNet.Numerics.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/MathNet.Numerics.dll": {}
+        }
+      },
       "Microsoft.NETCore.Platforms/1.1.0": {
         "type": "package",
         "compile": {
@@ -1237,6 +1246,26 @@
     }
   },
   "libraries": {
+    "MathNet.Numerics/4.15.0": {
+      "sha512": "cP4QgPPiU7boMyL8npvuQyVGVYUd/JQY1AWa+Wl2f//fuJN40qwt9ABRazunZIcDLHg3SSlgD/e+3Lnp69jNTg==",
+      "type": "package",
+      "path": "mathnet.numerics/4.15.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "icon.png",
+        "lib/net40/MathNet.Numerics.dll",
+        "lib/net40/MathNet.Numerics.xml",
+        "lib/net461/MathNet.Numerics.dll",
+        "lib/net461/MathNet.Numerics.xml",
+        "lib/netstandard1.3/MathNet.Numerics.dll",
+        "lib/netstandard1.3/MathNet.Numerics.xml",
+        "lib/netstandard2.0/MathNet.Numerics.dll",
+        "lib/netstandard2.0/MathNet.Numerics.xml",
+        "mathnet.numerics.4.15.0.nupkg.sha512",
+        "mathnet.numerics.nuspec"
+      ]
+    },
     "Microsoft.NETCore.Platforms/1.1.0": {
       "sha512": "kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
       "type": "package",
@@ -4580,24 +4609,25 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.0": [
+      "MathNet.Numerics >= 4.15.0",
       "OxyPlot.Wpf >= 2.0.0",
       "System.Collections.NonGeneric >= 4.3.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\yarde\\.nuget\\packages\\": {}
+    "C:\\Users\\97254\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\yarde\\Source\\Repos\\FlightSimulator\\WPF.csproj",
+      "projectUniqueName": "C:\\Users\\97254\\Documents\\CS\\SecondYear\\סמסטר ב\\AdvProg2\\FlightSimulator\\FlightSimulator\\WPF.csproj",
       "projectName": "WPF",
-      "projectPath": "C:\\Users\\yarde\\Source\\Repos\\FlightSimulator\\WPF.csproj",
-      "packagesPath": "C:\\Users\\yarde\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\yarde\\Source\\Repos\\FlightSimulator\\obj\\",
+      "projectPath": "C:\\Users\\97254\\Documents\\CS\\SecondYear\\סמסטר ב\\AdvProg2\\FlightSimulator\\FlightSimulator\\WPF.csproj",
+      "packagesPath": "C:\\Users\\97254\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\97254\\Documents\\CS\\SecondYear\\סמסטר ב\\AdvProg2\\FlightSimulator\\FlightSimulator\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\yarde\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\97254\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4609,7 +4639,6 @@
       },
       "frameworks": {
         "netcoreapp3.0": {
-          "targetAlias": "netcoreapp3.0",
           "projectReferences": {}
         }
       },
@@ -4621,8 +4650,11 @@
     },
     "frameworks": {
       "netcoreapp3.0": {
-        "targetAlias": "netcoreapp3.0",
         "dependencies": {
+          "MathNet.Numerics": {
+            "target": "Package",
+            "version": "[4.15.0, )"
+          },
           "OxyPlot.Wpf": {
             "target": "Package",
             "version": "[2.0.0, )"
@@ -4642,24 +4674,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[3.0.1, 3.0.1]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[3.0.3, 3.0.3]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[3.0.0, 3.0.0]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[3.0.0, 3.0.0]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
@@ -4668,7 +4682,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

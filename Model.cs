@@ -13,7 +13,7 @@ namespace WPF
     class Model : IModel
     {
         private OpenFileDialog csvFile;
-        List<String> rowsList;
+        TimeSeries rowsList;
 
         ITelnetClient telnetClient;
         volatile Boolean stop;
@@ -184,15 +184,6 @@ namespace WPF
             stop = false;
         }
 
-        //public XmlNodeList parseXML(string filePath)
-        //{
-        //    XmlDocument xml = new XmlDocument();
-        //    xml.Load(filePath);
-        //    XmlNodeList names = xml.GetElementsByTagName("name");
-
-        //    return names;
-        //}
-
         // get attribute index
         public int getAttributeIdx(string att, XmlNodeList attributeList, int appearance)
         {
@@ -244,16 +235,16 @@ namespace WPF
             int startOfPlotIndex = 0;
             new Thread(delegate ()
             {
-                while ((!stop) && (currentRow < rowsList.Count))
+                while ((!stop) && (currentRow < rowsList.getNumOfRows()))
                 {
                     while (pause)
                     {
                         continue;
                     }
-                    telnetClient.write(rowsList[currentRow]);
+                    telnetClient.write(rowsList.printRow(currentRow));
                     Thread.Sleep(playbackSpeed);
 
-                    string[] parsedLine = parseLine(rowsList[currentRow]);
+                    string[] parsedLine = parseLine(rowsList.printRow(currentRow));
 
                     if (parsedLine.Length > 1)
                     {
@@ -302,25 +293,11 @@ namespace WPF
         public int getCSV(OpenFileDialog csvFile)
         {
             this.csvFile = csvFile;
-            this.rowsList = new List<string>();
-
-            // populate line
-            StreamReader sr = new StreamReader(csvFile.FileName);
-
-            // keep reading from file and send to server
-            string line = sr.ReadLine();
-
-            while (line != null)
-            {
-                rowsList.Add(line+'\n');
-
-                // read new line
-                line = sr.ReadLine();
-            }
+            this.rowsList = new TimeSeries(csvFile.FileName);
 
             
             start();
-            return rowsList.Count;
+            return rowsList.getNumOfRows();
         }
 
         public void PlaybackSpeedChanged(int PlaybackSpeed)
