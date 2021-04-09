@@ -44,6 +44,9 @@ namespace WPF
         private List<String> listOfFeatureNames;
         private List<DataPoint> pointsSelectedFeature;
         private List<DataPoint> pointsCorrelatedFeature;
+        private List<DataPoint> pointsSelectedAndCorrelated;
+        private List<DataPoint> regressionLinePoints;
+        private List<DataPoint> pointsLast30Sec;
 
 
         public List<String> ListOfFeatureNames
@@ -62,7 +65,7 @@ namespace WPF
             set
             {
                 pointsSelectedFeature = value;
-                
+
             }
         }
 
@@ -76,7 +79,37 @@ namespace WPF
             }
         }
 
+        public List<DataPoint> PointsSelectedAndCorrelated
+        {
+            get { return pointsSelectedAndCorrelated; }
+            set
+            {
+                pointsSelectedAndCorrelated = value;
+
+            }
+        }
+        public List<DataPoint> RegressionLinePoints
+        {
+            get { return regressionLinePoints; }
+            set
+            {
+                regressionLinePoints = value;
+
+            }
+        }
+
+        public List<DataPoint> Last30SecPoints
+        {
+            get { return pointsLast30Sec; }
+            set
+            {
+                pointsLast30Sec = value;
+
+            }
+        }
+
         private int numOfCSVRows = 2000;
+
         public int NumOfCSVRows
         {
             get { return numOfCSVRows; }
@@ -238,11 +271,14 @@ namespace WPF
 
             PointsSelectedFeature = new List<DataPoint>();
             PointsCorrelatedFeature = new List<DataPoint>();
+            PointsSelectedAndCorrelated = new List<DataPoint>();
+            RegressionLinePoints = new List<DataPoint>();
+            Last30SecPoints = new List<DataPoint>();
             // open client connection
             telnetClient.connect("localhost", 5400);
 
             // lastSelectedFeatureIndex to clean the plot
-            int lastSelectedFeatureIndex = selectedFeatureIndex;
+            int lastSelectedFeatureIndex = -1;
             int startOfPlotIndex = 0;
             new Thread(delegate ()
             {
@@ -278,6 +314,16 @@ namespace WPF
                         startOfPlotIndex = currentRow;
                         PointsSelectedFeature = new List<DataPoint>();
                         PointsCorrelatedFeature = new List<DataPoint>();
+
+                        // Add Scatter Plot
+                        PointsSelectedAndCorrelated = rowsList.getDataPointSeries(selectedFeatureIndex, rowsList.highestCorrelationInds[selectedFeatureIndex]);
+                        OnPropertyChanged("PointsSelectedAndCorrelated");
+
+                        RegressionLinePoints = rowsList.getRegressionLine(selectedFeatureIndex, rowsList.highestCorrelationInds[selectedFeatureIndex]);
+                        OnPropertyChanged("RegressionLinePoints");
+
+                        Last30SecPoints = new List<DataPoint>(); //TODO: init with last 30 sec or from the beginning
+
                         lastSelectedFeatureIndex = selectedFeatureIndex;
                     }
 
@@ -285,6 +331,15 @@ namespace WPF
                     PointsCorrelatedFeature.Add(new DataPoint(currentRow, float.Parse(parsedLine[rowsList.highestCorrelationInds[selectedFeatureIndex]])));
                     OnPropertyChanged("PointsSelectedFeature");
                     OnPropertyChanged("PointsCorrelatedFeature");
+
+                    // Add to Last30SecPoints
+                    Last30SecPoints.Add(new DataPoint(float.Parse(parsedLine[selectedFeatureIndex]), float.Parse(parsedLine[rowsList.highestCorrelationInds[selectedFeatureIndex]])));
+                    while (Last30SecPoints.Count > 30*(1000 / playbackSpeed))
+                    {
+                        Last30SecPoints.RemoveAt(0);
+                    }
+                    OnPropertyChanged("Last30SecPoints");
+
                     // TODO: Remove
                     System.Diagnostics.Debug.WriteLine("playbackSpeed: {0}", playbackSpeed);
 
@@ -309,7 +364,7 @@ namespace WPF
             this.csvFile = csvFile;
             this.rowsList = new TimeSeries(csvFile.FileName);
             this.rowsList.setHighestCorrelations();
-            
+
             start();
             return rowsList.getNumOfRows();
         }

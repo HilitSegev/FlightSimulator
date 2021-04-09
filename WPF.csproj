@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\1234.jpg" />
     <None Remove="Resources\pauseButton.PNG" />
     <None Remove="Resources\playButton.PNG" />
     <None Remove="Resources\stopButton.PNG" />
@@ -21,6 +22,7 @@
 
   <ItemGroup>
     <Resource Include="playback_small.xml" />
+    <Resource Include="Resources\1234.jpg" />
     <Resource Include="Resources\pauseButton.PNG" />
     <Resource Include="Resources\playButton.PNG" />
     <Resource Include="Resources\stopButton.PNG" />

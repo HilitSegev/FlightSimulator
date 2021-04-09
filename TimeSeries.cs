@@ -1,4 +1,5 @@
 ﻿using MathNet.Numerics.Statistics;
+using OxyPlot;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -104,5 +105,66 @@ namespace WPF
                 highestCorrelationInds.Add(this.BestCorrelation(i));
             }
         }
+
+        public List<DataPoint> getDataPointSeries(int i, int j)
+        {
+            List<DataPoint> result = new List<DataPoint>();
+            List<Double> col1 = this.getColumn(i);
+            List<Double> col2 = this.getColumn(j);
+
+            for (int k = 0; k < this.getNumOfRows(); k++)
+            {
+                result.Add(new DataPoint(col1[k], col2[k]));
+            }
+
+            return result;
+        }
+
+        public List<DataPoint> getRegressionLine(int i, int j)
+        {
+            List<Double> x = this.getColumn(i);
+            List<Double> y = this.getColumn(j);
+
+            // calculate elements for regression line formula
+            Double sumXX = 0;
+            Double sumXY = 0;
+            Double sumX = 0;
+            Double sumY = 0;
+
+            for (int k = 0; k < x.Count; k++)
+            {
+                sumX += x[k];
+                sumY += y[k];
+                sumXX += x[k] * x[k];
+                sumXY += x[k] * y[k];
+            }
+
+            // get regression line: y = a*x + b
+            Double a = Utilities.cov(x, y) / (Utilities.var(x) + 1 / 1e13); //TODO: better solution +1/1e9 to avoid dividing by 0
+            Double b = Utilities.avg(y) - a * Utilities.avg(x);
+            List<DataPoint> result = new List<DataPoint>();
+             // we want to take the points up to the edges
+            Double yMin = y.Minimum();
+            Double yMax = y.Maximum();
+            
+            // x is full of 0s
+            if ((Utilities.avg(x) == 0) && (Utilities.var(x) == 0))
+            {
+                a = 1e14;
+                result.Add(new DataPoint(0, yMin));
+                result.Add(new DataPoint(0, yMax));
+                return result;
+            }
+           
+           
+            for (int k = 0; k < x.Count; k++)
+            {
+                result.Add(new DataPoint(x[k], Math.Max(Math.Min((a * x[k] + b), yMax), yMin)));
+            }
+
+            return result;
+        }
+
+
     }
 }

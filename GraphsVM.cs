@@ -44,6 +44,35 @@ namespace WPF
             }
         }
 
+        public List<DataPoint> VM_PointsSelectedAndCorrelated
+        {
+            get
+            {
+                invalidateFlag++;
+                NotifyPropertyChanged("VM_InvalidateFlag");
+                return model.PointsSelectedAndCorrelated;
+            }
+        }
+        public List<DataPoint> VM_RegressionLinePoints
+        {
+            get
+            {
+                invalidateFlag++;
+                NotifyPropertyChanged("VM_InvalidateFlag");
+                return model.RegressionLinePoints;
+            }
+        }
+
+        public List<DataPoint> VM_Last30SecPoints
+        {
+            get
+            {
+                invalidateFlag++;
+                NotifyPropertyChanged("VM_InvalidateFlag");
+                return model.Last30SecPoints;
+            }
+        }
+
         public int VM_InvalidateFlag
         {
             get

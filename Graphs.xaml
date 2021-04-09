@@ -7,18 +7,26 @@
              xmlns:local="clr-namespace:WPF"
              mc:Ignorable="d" 
              d:DesignHeight="222" d:DesignWidth="407">
-    <Grid>
-        <ListBox x:Name="featureNamesList" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="148" Height="190" SelectedIndex="{Binding VM_SelectedFeatureIndex}"/>
+    <Grid Margin="0,0,0,-88">
+        <ListBox x:Name="featureNamesList" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="148" Height="278" SelectedIndex="{Binding VM_SelectedFeatureIndex}"/>
 
-        <oxy:Plot x:Name="SelectedFeaturePlot" Margin="163,10,142,111"  InvalidateFlag="{Binding VM_InvalidateFlag}">
+        <oxy:Plot x:Name="SelectedFeaturePlot" Margin="163,10,142,199"  InvalidateFlag="{Binding VM_InvalidateFlag}">
             <oxy:Plot.Series>
                 <oxy:LineSeries ItemsSource="{Binding VM_PointsSelectedFeature}"/>
             </oxy:Plot.Series>
         </oxy:Plot>
 
-        <oxy:Plot x:Name="correlatedFeaturePlot" Margin="270,10,32,111"  InvalidateFlag="{Binding VM_InvalidateFlag}">
+        <oxy:Plot x:Name="correlatedFeaturePlot" Margin="270,10,32,199"  InvalidateFlag="{Binding VM_InvalidateFlag}">
             <oxy:Plot.Series>
                 <oxy:LineSeries ItemsSource="{Binding VM_PointsCorrelatedFeature}"/>
+            </oxy:Plot.Series>
+        </oxy:Plot>
+
+        <oxy:Plot x:Name="regressionLinePlot" Margin="163,116,32,22"  InvalidateFlag="{Binding VM_InvalidateFlag}">
+            <oxy:Plot.Series>
+                <oxy:LineSeries ItemsSource="{Binding VM_PointsSelectedAndCorrelated}" Color="Black" MarkerSize="2" StrokeThickness="0" MarkerType = "Circle"/>
+                <oxy:LineSeries ItemsSource="{Binding VM_Last30SecPoints}" Color="Orange" MarkerSize="2" StrokeThickness="0" MarkerType = "Circle"/>
+                <oxy:LineSeries ItemsSource="{Binding VM_RegressionLinePoints}" Color="Green" StrokeThickness="1"/>
             </oxy:Plot.Series>
         </oxy:Plot>
 

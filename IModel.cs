@@ -35,6 +35,9 @@ namespace WPF
         List<DataPoint> PointsSelectedFeature { get; set; }
         int NumOfCSVRows { get; }
         List<DataPoint> PointsCorrelatedFeature { get; set; }
+        List<DataPoint> Last30SecPoints { get; set; }
+        List<DataPoint> PointsSelectedAndCorrelated { get; set; }
+        List<DataPoint> RegressionLinePoints { get; set; }
 
         public void currentRowChanged(int currentRow);
 
