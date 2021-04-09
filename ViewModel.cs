@@ -44,8 +44,8 @@ namespace WPF
                 model.CurrentRow = value;
                 model.PointsSelectedFeature = new List<DataPoint>();
                 model.PointsCorrelatedFeature = new List<DataPoint>();
-                model.PointsSelectedAndCorrelated = new List<DataPoint>();
-                model.RegressionLinePoints = new List<DataPoint>();
+                //model.PointsSelectedAndCorrelated = new List<DataPoint>();
+                model.RegressionLinePoints = model.PointsSelectedAndCorrelated.GetRange(0, model.CurrentRow);
                 model.Last30SecPoints = new List<DataPoint>();
 
             }

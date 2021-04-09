@@ -322,8 +322,8 @@ namespace WPF
                         RegressionLinePoints = rowsList.getRegressionLine(selectedFeatureIndex, rowsList.highestCorrelationInds[selectedFeatureIndex]);
                         OnPropertyChanged("RegressionLinePoints");
 
-                        Last30SecPoints = new List<DataPoint>(); //TODO: init with last 30 sec or from the beginning
-
+                        //Last30SecPoints = new List<DataPoint>(); //TODO: init with last 30 sec or from the beginning
+                        Last30SecPoints = PointsSelectedAndCorrelated.GetRange(0, currentRow);
                         lastSelectedFeatureIndex = selectedFeatureIndex;
                     }
 
