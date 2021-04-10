@@ -4,7 +4,7 @@ Implmented using WPF technology and MVVM architecture.
 
 ### Installing 
 * Download and install the simulator on your computer- https://www.flightgear.org/download/
-* Add the  generic_small.xml file to the /data/Protocol directory where you installed the simulator
+* Add the  playback_small.xml file to the /data/Protocol directory where you installed the simulator
 * Config the following settings in the 'Settings' tab in the simulator:
 ```
 --generic=socket,in,10,127.0.0.1,5400,tcp,playback_small
