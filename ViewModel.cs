@@ -132,6 +132,13 @@ namespace WPF
             VM_NumOfCSVRows = model.getCSV(csvFile);
 
         }
+
+        public void VM_sendCSVDetect(OpenFileDialog csvFile)
+        {
+            model.getCSVDetect(csvFile);
+
+        }
+
         public void VM_playButtonClick()
         {
             model.pause = false;

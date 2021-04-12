@@ -11,7 +11,8 @@ namespace WPF
             // TODO: READ ONLY INPUT (We read both input and output so the list contains duplicates)
             XmlDocument xml = new XmlDocument();
             xml.Load(filePath);
-            XmlNodeList names = xml.GetElementsByTagName("name");
+            XmlNodeList names = xml.SelectNodes("/PropertyList/generic/input/chunk/name");//.GetElementsByTagName("name");
+            //XmlNodeList names = xml.GetElementsByTagName("name");
             return names;
         }
 

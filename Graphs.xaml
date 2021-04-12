@@ -6,27 +6,38 @@
              xmlns:oxy="http://oxyplot.org/wpf"
              xmlns:local="clr-namespace:WPF"
              mc:Ignorable="d" 
-             d:DesignHeight="222" d:DesignWidth="407">
-    <Grid Margin="0,0,0,-88">
-        <ListBox x:Name="featureNamesList" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="148" Height="278" SelectedIndex="{Binding VM_SelectedFeatureIndex}"/>
+             d:DesignHeight="550" d:DesignWidth="1150">
+    <Grid Width="1150" Height="550">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="529*"/>
+            <ColumnDefinition Width="543*"/>
+            <ColumnDefinition Width="27*"/>
+            <ColumnDefinition Width="51*"/>
+        </Grid.ColumnDefinitions>
+        <ListBox x:Name="featureNamesList" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="250" Height="270" SelectedIndex="{Binding VM_SelectedFeatureIndex}"/>
+        <ListBox x:Name="anomaliesListView" HorizontalAlignment="Left" Margin="10,285,0,0" VerticalAlignment="Top" Width="250" Height="255" ItemsSource="{Binding VM_AnomalyIdxList}" SelectedIndex="{Binding VM_SelectedAnomaly}"/>
 
-        <oxy:Plot x:Name="SelectedFeaturePlot" Margin="163,10,142,199"  InvalidateFlag="{Binding VM_InvalidateFlag}">
+        <oxy:Plot x:Name="SelectedFeaturePlot" Margin="270,10,0,0" Background="#A0FFFFFF" InvalidateFlag="{Binding VM_InvalidateFlag}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="435" Height="270" Grid.ColumnSpan="2">
+            <oxy:Plot.Axes>                <oxy:LinearAxis IsAxisVisible="False" />            </oxy:Plot.Axes>
             <oxy:Plot.Series>
                 <oxy:LineSeries ItemsSource="{Binding VM_PointsSelectedFeature}"/>
             </oxy:Plot.Series>
         </oxy:Plot>
 
-        <oxy:Plot x:Name="correlatedFeaturePlot" Margin="270,10,32,199"  InvalidateFlag="{Binding VM_InvalidateFlag}">
+        <oxy:Plot x:Name="correlatedFeaturePlot" Margin="0,10,10,0" Background="#A0FFFFFF" InvalidateFlag="{Binding VM_InvalidateFlag}" Width="430" Height="270" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.ColumnSpan="3" Grid.Column="1">
+            <oxy:Plot.Axes>                <oxy:LinearAxis IsAxisVisible="False" />            </oxy:Plot.Axes>
             <oxy:Plot.Series>
                 <oxy:LineSeries ItemsSource="{Binding VM_PointsCorrelatedFeature}"/>
             </oxy:Plot.Series>
         </oxy:Plot>
 
-        <oxy:Plot x:Name="regressionLinePlot" Margin="163,116,32,22"  InvalidateFlag="{Binding VM_InvalidateFlag}">
+        <oxy:Plot x:Name="regressionLinePlot" Margin="0,0,10,10" Background="#A0FFFFFF" IsLegendVisible="True" InvalidateFlag="{Binding VM_InvalidateFlag}" Width="870" Grid.ColumnSpan="4" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="255">
+            <oxy:Plot.Axes>                <oxy:LinearAxis IsAxisVisible="False" />            </oxy:Plot.Axes>
             <oxy:Plot.Series>
-                <oxy:LineSeries ItemsSource="{Binding VM_PointsSelectedAndCorrelated}" Color="Black" MarkerSize="2" StrokeThickness="0" MarkerType = "Circle"/>
-                <oxy:LineSeries ItemsSource="{Binding VM_Last30SecPoints}" Color="Orange" MarkerSize="2" StrokeThickness="0" MarkerType = "Circle"/>
-                <oxy:LineSeries ItemsSource="{Binding VM_RegressionLinePoints}" Color="Green" StrokeThickness="1"/>
+                <oxy:LineSeries ItemsSource="{Binding VM_PointsSelectedAndCorrelated}" Title="all" Color="Black" MarkerSize="2" StrokeThickness="0" MarkerType = "Circle"/>
+                <oxy:LineSeries ItemsSource="{Binding VM_Last30SecPoints}" Title="last 30 seconds" Color="Orange" MarkerSize="2" StrokeThickness="0" MarkerType = "Circle"/>
+                <oxy:LineSeries ItemsSource="{Binding VM_AnomalyPoints}" Title="anomalies" Color="Red" MarkerSize="3" StrokeThickness="0" MarkerType = "Circle"/>
+                <oxy:LineSeries ItemsSource="{Binding VM_RegressionLinePoints}" Title="regression line" Color="Green" StrokeThickness="1"/>
             </oxy:Plot.Series>
         </oxy:Plot>
 

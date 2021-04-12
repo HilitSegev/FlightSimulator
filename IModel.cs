@@ -30,6 +30,8 @@ namespace WPF
         float Roll { set; get; }
 
         public void SelectedFeatureChanged(int selectedFeatureIndex);
+        public void DLLDynamic(dynamic dllDynamic);
+        void SelectedAnomalyChanged(int selectedAnomaly);
 
         float Yaw { set; get; }
         List<DataPoint> PointsSelectedFeature { get; set; }
@@ -38,8 +40,10 @@ namespace WPF
         List<DataPoint> Last30SecPoints { get; set; }
         List<DataPoint> PointsSelectedAndCorrelated { get; set; }
         List<DataPoint> RegressionLinePoints { get; set; }
+        List<DataPoint> AnomalyPoints { get; set; }
+        List<string> AnomalyIdxList { get; set; }
 
         public void currentRowChanged(int currentRow);
-
+        public void getCSVDetect(OpenFileDialog csvFileDetect);
     }
 }

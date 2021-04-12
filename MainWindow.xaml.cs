@@ -52,8 +52,30 @@ namespace WPF
 
             if (csvFile.ShowDialog() == true)
             {
-                txtEditor.Text = File.ReadAllText(csvFile.FileName);
                 vm.VM_sendCSV(csvFile);
+            }
+        }
+
+        private void uploadDLLButton_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog dllFile = new OpenFileDialog();
+            dllFile.Filter = "DLL Files (*.dll)|*.dll";
+
+            if (dllFile.ShowDialog() == true)
+            {
+                string dll_path = dllFile.FileName;
+                Gvm.VM_DLLpath = dll_path;
+                graphs.DLL();
+            }
+        }
+        private void uploadCSVdetectButton_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog csvFileDetect = new OpenFileDialog();
+            csvFileDetect.Filter = "CSV Files (*.csv)|*.csv";
+
+            if (csvFileDetect.ShowDialog() == true)
+            {
+                vm.VM_sendCSVDetect(csvFileDetect);
             }
         }
 

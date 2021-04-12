@@ -88,7 +88,7 @@ namespace WPF
 
             for (int i = 0; i < this.getNumOfColumns(); i++)
             {
-                currentCorr = Correlation.Pearson(this.getColumn(index), this.getColumn(i));
+                currentCorr = Math.Abs(Correlation.Pearson(this.getColumn(index), this.getColumn(i)));
                 if (currentCorr > maxCorr && i != index)
                 {
                     maxCorr = currentCorr;

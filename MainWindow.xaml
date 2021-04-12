@@ -10,39 +10,28 @@
         xmlns:PlaybackSpeed="clr-namespace:WPF"
         xmlns:Graphs="clr-namespace:WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="524" Width="894">
-    <Window.Background>
-        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-            <GradientStop Color="#FFFF8C8C" Offset="0.285"/>
-            <GradientStop Color="White" Offset="0.779"/>
-        </LinearGradientBrush>
-    </Window.Background>
+        Title="MainWindow" Height="750" Width="1400" ResizeMode="NoResize">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="Resources/1234.jpg"/>
         </Grid.Background>
 
-        <Button Content="upload CSV" HorizontalAlignment="Left" Margin="216,10,0,0" VerticalAlignment="Top" Click="uploadCSVButton_Click"/>
-        <TextBox Name="txtEditor" HorizontalAlignment="Left" Margin="18,10,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="172" Height="20"/>
-        <Button x:Name="playButton" HorizontalAlignment="Left" Margin="19,471,0,0" VerticalAlignment="Top" Height="25" Width="25" Background="#00DDDDDD" Click="playButtonClick">
+        <Button Content="FLY &amp; TRAIN" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Click="uploadCSVButton_Click" Height="42" Width="84"/>
+        <Button Content="DLL SELECTION" HorizontalAlignment="Left" Margin="100,33,0,0" VerticalAlignment="Top" Click="uploadDLLButton_Click" Width="125"/>
+        <Button Content="DETECT ANOMALIES" HorizontalAlignment="Left" Margin="100,10,0,0" VerticalAlignment="Top" Click="uploadCSVdetectButton_Click" Width="125" Background="#FFDDDDDD"/>
+
+        <Button x:Name="playButton" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Height="25" Width="25" Background="#00DDDDDD" Click="playButtonClick">
             <Image  Source="Resources/playButton.png"/>
         </Button>
-        <Button x:Name="pauseButton" HorizontalAlignment="Left" Margin="44,471,0,0" VerticalAlignment="Top" Height="25" Width="25" Background="#00DDDDDD" Click="pauseButtonClick">
+        <Button x:Name="pauseButton" HorizontalAlignment="Left" Margin="40,0,0,10" VerticalAlignment="Bottom" Height="25" Width="25" Background="#00DDDDDD" Click="pauseButtonClick">
             <Image Source="Resources/pauseButton.png" Visibility="Visible"/>
         </Button>
-        <Button x:Name="stopButton" HorizontalAlignment="Left" Margin="69,471,0,0" VerticalAlignment="Top" Height="25" Width="25" Background="#00DDDDDD" Click="stopButtonClick">
+        <Button x:Name="stopButton" HorizontalAlignment="Left" Margin="70,0,0,10" VerticalAlignment="Bottom" Height="25" Width="25" Background="#00DDDDDD" Click="stopButtonClick">
             <Image Source="Resources/stopButton.png"/>
         </Button>
-        <Slider x:Name="timeSlider" HorizontalAlignment="Center" Margin="0,476,0,0" VerticalAlignment="Top" Width="666" Value="{Binding VM_CurrentRow}" Maximum="{Binding VM_NumOfCSVRows}" />
-        <Label Content="{Binding VM_CurrentRow}" HorizontalAlignment="Left" Margin="655,408,0,0" VerticalAlignment="Top"/>
-        <ComboBox HorizontalAlignment="Left" Margin="808,474,0,0" VerticalAlignment="Top" Width="76" SelectedIndex="1">
-            <Label Content="x0.5"/>
-            <Label Content="x1.0"/>
-            <Label Content="x1.5"/>
-            <Label Content="x2.0"/>
-            <Label Content="x2.5"/>
-        </ComboBox>
-        <ProgressBar HorizontalAlignment="Left" Height="10" Margin="988,319,0,0" VerticalAlignment="Top" Width="100"/>
+        <Slider x:Name="timeSlider" HorizontalAlignment="Left" Margin="100,0,0,10" VerticalAlignment="Bottom" Width="970" Value="{Binding VM_CurrentRow}" Maximum="{Binding VM_NumOfCSVRows}" />
+        <Label Content="{Binding VM_CurrentRow}" HorizontalAlignment="Left" Margin="1805,10,0,0" VerticalAlignment="Bottom"/>
+        <!--<ProgressBar HorizontalAlignment="Left" Height="10" Margin="988,319,0,0" VerticalAlignment="Top" Width="100"/>-->
 
         <!--
         <ListBox x:Name="featureNamesList" HorizontalAlignment="Left" Margin="410,209,0,0" VerticalAlignment="Top" Width="148" SelectedIndex="{Binding VM_SelectedFeatureIndex}" Height="100"/>
@@ -55,9 +44,9 @@
         </oxy:Plot>
         -->
 
-        <DashBoard:DashBoard x:Name="dashBoard" Margin="18,274,704,84"/>
-        <JoyStick:JoyStick x:Name="joyStick" Margin="454,-10,10,315" />
-        <PlaybackSpeed:PlaybackSpeed x:Name="playbackSpeed" Margin="625,254,48,204"/>
-        <Graphs:Graphs x:Name="graphs" Height="220" Width="400" Margin="10,54,484,234" />
+        <DashBoard:DashBoard x:Name="dashBoard" Margin="10,80,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <JoyStick:JoyStick x:Name="joyStick" Margin="10,240,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" />
+        <PlaybackSpeed:PlaybackSpeed x:Name="playbackSpeed" Margin="10,254,10,10" HorizontalContentAlignment="Left" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="300"/>
+        <Graphs:Graphs x:Name="graphs" Height="550" Width="1150" HorizontalAlignment="Right" VerticalAlignment="Top" />
     </Grid>
 </Window>

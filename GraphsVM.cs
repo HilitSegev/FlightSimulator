@@ -1,4 +1,5 @@
-﻿using OxyPlot;
+﻿using Microsoft.Win32;
+using OxyPlot;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +14,10 @@ namespace WPF
         private IModel model;
         private int invalidateFlag;
         private int selectedFeatureIndex;
+        private int selectedAnomaly;
+
+        private Object dllDynamic;
+        private string dllPath;
 
         public int VM_SelectedFeatureIndex
         {
@@ -21,6 +26,15 @@ namespace WPF
             {
                 selectedFeatureIndex = value;
                 model.SelectedFeatureChanged(selectedFeatureIndex);
+            }
+        }
+        public int VM_SelectedAnomaly
+        {
+            get { return selectedAnomaly; }
+            set
+            {
+                selectedAnomaly = value;
+                model.SelectedAnomalyChanged(selectedAnomaly);
             }
         }
 
@@ -73,6 +87,26 @@ namespace WPF
             }
         }
 
+        public List<DataPoint> VM_AnomalyPoints
+        {
+            get
+            {
+                invalidateFlag++;
+                NotifyPropertyChanged("VM_InvalidateFlag");
+                return model.AnomalyPoints;
+            }
+        }
+
+        public List<string> VM_AnomalyIdxList
+        {
+            get
+            {
+                invalidateFlag++;
+                NotifyPropertyChanged("VM_InvalidateFlag");
+                return model.AnomalyIdxList;
+            }
+        }
+
         public int VM_InvalidateFlag
         {
             get
@@ -95,5 +129,25 @@ namespace WPF
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
 
         }
+
+        public dynamic VM_DLLDynamic
+        {
+            get { return dllDynamic; }
+            set
+            {
+                dllDynamic = value;
+                model.DLLDynamic(dllDynamic);
+            }
+        }
+
+        public string VM_DLLpath
+        {
+            get { return dllPath; }
+            set
+            {
+                dllPath = value;
+            }
+        }
+
     }
 }

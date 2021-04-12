@@ -13,11 +13,13 @@ namespace WPF
     class Model : IModel
     {
         private OpenFileDialog csvFile;
+        private OpenFileDialog csvFileDetect;
         TimeSeries rowsList;
+        TimeSeries rowsListDetect;
 
         ITelnetClient telnetClient;
         volatile Boolean stop;
-        public Boolean pause { get; set; }
+        public Boolean pause { get; set; } = true;
         int currentRow;
         public int CurrentRow
         {
@@ -30,6 +32,7 @@ namespace WPF
         }
         private int playbackSpeed;
         private int selectedFeatureIndex;
+        private int selectedAnomaly = -1;
         private float rudder;
         private float throttle1;
         private float throttle2;
@@ -47,6 +50,11 @@ namespace WPF
         private List<DataPoint> pointsSelectedAndCorrelated;
         private List<DataPoint> regressionLinePoints;
         private List<DataPoint> pointsLast30Sec;
+        private List<DataPoint> anomalyPoints;
+        private List<string> anomalyIdxList;
+
+
+        private dynamic dllDynamic;
 
 
         public List<String> ListOfFeatureNames
@@ -104,6 +112,25 @@ namespace WPF
             set
             {
                 pointsLast30Sec = value;
+
+            }
+        }
+
+        public List<string> AnomalyIdxList
+        {
+            get { return anomalyIdxList; }
+            set
+            {
+                anomalyIdxList = value;
+            }
+        }
+
+        public List<DataPoint> AnomalyPoints
+        {
+            get { return anomalyPoints; }
+            set
+            {
+                anomalyPoints = value;
 
             }
         }
@@ -268,7 +295,7 @@ namespace WPF
         {
             // testing xmlParser
             XmlNodeList parsedXML = parseXML("playback_small.xml");
-
+            List<int> indexList = new List<int>();
             PointsSelectedFeature = new List<DataPoint>();
             PointsCorrelatedFeature = new List<DataPoint>();
             PointsSelectedAndCorrelated = new List<DataPoint>();
@@ -279,6 +306,7 @@ namespace WPF
 
             // lastSelectedFeatureIndex to clean the plot
             int lastSelectedFeatureIndex = -1;
+            int lastSelectedAnomaly = -1;
             int startOfPlotIndex = 0;
             new Thread(delegate ()
             {
@@ -314,7 +342,8 @@ namespace WPF
                         startOfPlotIndex = currentRow;
                         PointsSelectedFeature = new List<DataPoint>();
                         PointsCorrelatedFeature = new List<DataPoint>();
-
+                        AnomalyPoints = new List<DataPoint>();
+                        AnomalyIdxList = new List<string>();
                         // Add Scatter Plot
                         PointsSelectedAndCorrelated = rowsList.getDataPointSeries(selectedFeatureIndex, rowsList.highestCorrelationInds[selectedFeatureIndex]);
                         OnPropertyChanged("PointsSelectedAndCorrelated");
@@ -325,6 +354,19 @@ namespace WPF
                         //Last30SecPoints = new List<DataPoint>(); //TODO: init with last 30 sec or from the beginning
                         Last30SecPoints = PointsSelectedAndCorrelated.GetRange(0, currentRow);
                         lastSelectedFeatureIndex = selectedFeatureIndex;
+
+                        if (dllDynamic != null)
+                        {
+                            dllDynamic.Update(selectedFeatureIndex, rowsList.highestCorrelationInds[selectedFeatureIndex], csvFile.FileName, csvFileDetect.FileName);
+                            indexList = dllDynamic.getModel().getAnomalyList();
+                            foreach (int index in indexList)
+                            {
+                                AnomalyPoints.Add(PointsSelectedAndCorrelated[index]);
+                                AnomalyIdxList.Add(String.Format("{0}:\t ({1},{2})", index, PointsSelectedAndCorrelated[index].X, PointsSelectedAndCorrelated[index].Y));
+                            }
+                            OnPropertyChanged("AnomalyPoints");
+                            OnPropertyChanged("AnomalyIdxList");
+                        }
                     }
 
                     PointsSelectedFeature.Add(new DataPoint(currentRow, float.Parse(parsedLine[selectedFeatureIndex])));
@@ -334,17 +376,23 @@ namespace WPF
 
                     // Add to Last30SecPoints
                     Last30SecPoints.Add(new DataPoint(float.Parse(parsedLine[selectedFeatureIndex]), float.Parse(parsedLine[rowsList.highestCorrelationInds[selectedFeatureIndex]])));
-                    while (Last30SecPoints.Count > 30*(1000 / playbackSpeed))
+                    while (Last30SecPoints.Count > 30 * (1000 / playbackSpeed))
                     {
                         Last30SecPoints.RemoveAt(0);
                     }
                     OnPropertyChanged("Last30SecPoints");
 
-                    // TODO: Remove
-                    System.Diagnostics.Debug.WriteLine("playbackSpeed: {0}", playbackSpeed);
-
                     // read new line
                     CurrentRow++;
+                    if (indexList.Count > 0)
+                    {
+                        if (lastSelectedAnomaly != selectedAnomaly)
+                        {
+                            CurrentRow = indexList[selectedAnomaly];
+                            lastSelectedAnomaly = selectedAnomaly;
+                            lastSelectedFeatureIndex = -1;
+                        }
+                    }
 
                 }
             }).Start();
@@ -382,6 +430,23 @@ namespace WPF
         public void SelectedFeatureChanged(int selectedFeatureIndex)
         {
             this.selectedFeatureIndex = selectedFeatureIndex;
+        }
+
+        public void SelectedAnomalyChanged(int selectedAnomaly)
+        {
+            this.selectedAnomaly = selectedAnomaly;
+        }
+
+        public void DLLDynamic(dynamic dllDynamic)
+        {
+            this.dllDynamic = dllDynamic;
+        }
+
+        public void getCSVDetect(OpenFileDialog csvFileDetect)
+        {
+            this.csvFileDetect = csvFileDetect;
+            this.rowsListDetect = new TimeSeries(csvFileDetect.FileName);
+            this.rowsListDetect.setHighestCorrelations();
         }
     }
 }

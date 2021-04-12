@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -38,6 +39,30 @@ namespace WPF
             {
                 Gvm = value;
                 this.DataContext = Gvm;
+            }
+        }
+        
+        public void DLL()
+        {
+            string path = Gvm.VM_DLLpath;
+            try {
+                Assembly dll = Assembly.LoadFile(path);
+                Type[] typesInDLL = dll.GetExportedTypes();
+                string s = "DLLPacade";
+                foreach(Type t in typesInDLL)
+                {
+                    if (t.Name == s)
+                    {
+                        VM_Graphs.VM_DLLDynamic = Activator.CreateInstance(t);
+                    }
+                }
+                VM_Graphs.VM_DLLDynamic.Create();
+            }
+
+
+            catch (Exception e)
+            {
+                Console.WriteLine("Error loading DLL file");
             }
         }
     }

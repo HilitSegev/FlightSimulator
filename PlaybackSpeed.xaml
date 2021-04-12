@@ -5,9 +5,16 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPF"
              mc:Ignorable="d" 
-             d:DesignHeight="90" d:DesignWidth="270">
+             >
     <Grid>
-        <Slider Maximum ="250" Minimum ="4" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" Width="200" Value="{Binding VM_PlaybackSpeed}" RenderTransformOrigin="0.5,0.5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="294*"/>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="7*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock HorizontalAlignment="Left" Margin="0,0,0,0" Foreground="White" Text="Playback speed:" TextWrapping="Wrap" VerticalAlignment="Top" Width="307" Grid.ColumnSpan="4"/>
+        <Slider Maximum ="250" Minimum ="4" HorizontalAlignment="Left" Margin="87,0,0,0" VerticalAlignment="Center" Width="200" Value="{Binding VM_PlaybackSpeed}" RenderTransformOrigin="0.5,0.5">
             <Slider.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -17,7 +24,6 @@
                 </TransformGroup>
             </Slider.RenderTransform>
         </Slider>
-        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" Text="Playback speed:" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
 
     </Grid>
 </UserControl>
