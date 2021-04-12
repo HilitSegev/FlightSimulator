@@ -12,7 +12,6 @@ namespace WPF
             XmlDocument xml = new XmlDocument();
             xml.Load(filePath);
             XmlNodeList names = xml.SelectNodes("/PropertyList/generic/input/chunk/name");//.GetElementsByTagName("name");
-            //XmlNodeList names = xml.GetElementsByTagName("name");
             return names;
         }
 

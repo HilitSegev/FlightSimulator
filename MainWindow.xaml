@@ -31,18 +31,6 @@
         </Button>
         <Slider x:Name="timeSlider" HorizontalAlignment="Left" Margin="100,0,0,10" VerticalAlignment="Bottom" Width="970" Value="{Binding VM_CurrentRow}" Maximum="{Binding VM_NumOfCSVRows}" />
         <Label Content="{Binding VM_CurrentRow}" HorizontalAlignment="Left" Margin="1805,10,0,0" VerticalAlignment="Bottom"/>
-        <!--<ProgressBar HorizontalAlignment="Left" Height="10" Margin="988,319,0,0" VerticalAlignment="Top" Width="100"/>-->
-
-        <!--
-        <ListBox x:Name="featureNamesList" HorizontalAlignment="Left" Margin="410,209,0,0" VerticalAlignment="Top" Width="148" SelectedIndex="{Binding VM_SelectedFeatureIndex}" Height="100"/>
-
-
-        <oxy:Plot x:Name="SelectedFeaturePlot" Margin="563,209,65,92" Title="{Binding VM_Title}" InvalidateFlag="{Binding VM_InvalidateFlag}">
-            <oxy:Plot.Series>
-                <oxy:LineSeries ItemsSource="{Binding VM_PointsSelectedFeature}"/>
-            </oxy:Plot.Series>
-        </oxy:Plot>
-        -->
 
         <DashBoard:DashBoard x:Name="dashBoard" Margin="10,80,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <JoyStick:JoyStick x:Name="joyStick" Margin="10,240,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" />

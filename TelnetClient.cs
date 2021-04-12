@@ -36,9 +36,6 @@ namespace WPF
             Int32 bytes = stream.Read(data, 0, data.Length);
             responseData = System.Text.Encoding.ASCII.GetString(data, 0, bytes);
 
-            // TODO: Remove
-            System.Diagnostics.Debug.WriteLine("Received: {0}", responseData);
-
             return responseData;
         }
 
@@ -48,9 +45,6 @@ namespace WPF
             Byte[] data = System.Text.Encoding.ASCII.GetBytes(command);
             // Send the message to the connected TcpServer.
             stream.Write(data, 0, data.Length);
-
-            // TODO: Remove
-            System.Diagnostics.Debug.WriteLine("Sent: {0}", command);
         }
     }
 }

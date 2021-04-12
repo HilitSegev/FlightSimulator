@@ -14,27 +14,6 @@ namespace WPF
 
         private IModel model;
         private int currentRow;
-        //private int playbackSpeed;
-        // private int selectedFeatureIndex;
-        //public int VM_PlaybackSpeed
-        //{
-        //    get { return playbackSpeed; }
-        //    set
-        //    {
-        //        playbackSpeed = value;
-        //        model.PlaybackSpeedChanged(playbackSpeed);
-        //    }
-        //}
-
-        //public int VM_SelectedFeatureIndex
-        //{
-        //    get { return selectedFeatureIndex; }
-        //    set
-        //    {
-        //        selectedFeatureIndex = value;
-        //        model.SelectedFeatureChanged(selectedFeatureIndex);
-        //    }
-        //}
 
         public int VM_CurrentRow
         {
@@ -44,52 +23,12 @@ namespace WPF
                 model.CurrentRow = value;
                 model.PointsSelectedFeature = new List<DataPoint>();
                 model.PointsCorrelatedFeature = new List<DataPoint>();
-                //model.PointsSelectedAndCorrelated = new List<DataPoint>();
                 model.RegressionLinePoints = model.PointsSelectedAndCorrelated.GetRange(0, model.CurrentRow);
                 model.Last30SecPoints = new List<DataPoint>();
-
             }
         }
-        //public List<DataPoint> VM_PointsSelectedFeature
-        //{
-        //    get
-        //    {
-        //        invalidateFlag++;
-        //        NotifyPropertyChanged("VM_InvalidateFlag");
-        //        return model.PointsSelectedFeature;
-        //    }
-        //}
-        // private int invalidateFlag;
+
         private int numOfCSVRows;
-
-        //public int VM_InvalidateFlag
-        //{
-        //    get
-        //    {
-        //        return invalidateFlag;
-        //    }
-        //}
-
-        //public float VM_Rudder
-        //{
-        //    get { return model.Rudder; }
-        //}
-        //public float VM_Throttle1
-        //{
-        //    get { return model.Throttle1; }
-        //}
-        //public float VM_Throttle2
-        //{
-        //    get { return model.Throttle2; }
-        //}
-        //public float VM_Aileron
-        //{
-        //    get { return model.Aileron; }
-        //}
-        //public float VM_Elevator
-        //{
-        //    get { return model.Elevator; }
-        //}
 
         public int VM_NumOfCSVRows
         {
@@ -112,31 +51,21 @@ namespace WPF
                 NotifyPropertyChanged("VM_" + e.PropertyName);
             };
 
-            //this.playbackSpeed = 100;
-            //VM_PlaybackSpeed = playbackSpeed;
-
             this.currentRow = 0;
-
-
         }
         public void NotifyPropertyChanged(string propName)
         {
             if (this.PropertyChanged != null)
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
-
-            //this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
-
         }
         public void VM_sendCSV(OpenFileDialog csvFile)
         {
             VM_NumOfCSVRows = model.getCSV(csvFile);
-
         }
 
         public void VM_sendCSVDetect(OpenFileDialog csvFile)
         {
             model.getCSVDetect(csvFile);
-
         }
 
         public void VM_playButtonClick()
