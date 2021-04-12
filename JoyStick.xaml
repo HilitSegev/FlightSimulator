@@ -21,12 +21,12 @@
         <Slider Maximum ="1" Minimum ="0" HorizontalAlignment="Left" Margin="0,118,0,0" VerticalAlignment="Top" Width="200" Value="{Binding VM_Throttle2, Mode=OneWay}" RenderTransformOrigin="0.5,0.5" Ticks="0, 1" TickPlacement="BottomRight" AutoToolTipPrecision="2" AutoToolTipPlacement="BottomRight"/>
 
 
-        <TextBlock HorizontalAlignment="Left" Margin="26,43,0,0" Text="-1" TextWrapping="Wrap" VerticalAlignment="Top" Width="49"/>
-        <TextBlock HorizontalAlignment="Left" Margin="245,43,0,0" Text="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="49"/>
-        <TextBlock HorizontalAlignment="Left" Margin="245,106,0,0" Text="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="49"/>
-        <TextBlock HorizontalAlignment="Left" Margin="245,150,0,0" Text="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="49"/>
-        <TextBlock HorizontalAlignment="Left" Margin="26,106,0,0" Text="0" TextWrapping="Wrap" VerticalAlignment="Top" Width="49"/>
-        <TextBlock HorizontalAlignment="Left" Margin="26,149,0,0" Text="0" TextWrapping="Wrap" VerticalAlignment="Top" Width="48"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,34,0,0" Text="-1" TextWrapping="Wrap" VerticalAlignment="Top" Width="49"/>
+        <TextBlock HorizontalAlignment="Left" Margin="187,34,0,0" Text="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="49"/>
+        <TextBlock HorizontalAlignment="Left" Margin="187,84,0,0" Text="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="49"/>
+        <TextBlock HorizontalAlignment="Left" Margin="187,134,0,0" Text="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="49"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,84,0,0" Text="0" TextWrapping="Wrap" VerticalAlignment="Top" Width="49"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,134,0,0" Text="0" TextWrapping="Wrap" VerticalAlignment="Top" Width="48"/>
 
 
         <Viewbox Height="150" Width="150" Margin="25,150,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
