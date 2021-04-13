@@ -36,4 +36,8 @@ Further more you can use the bar below to reset/stop/continue the flight and cha
 
 ![flightPic](https://user-images.githubusercontent.com/72696075/114277649-b3c5e580-9a34-11eb-86b4-dce3f628d699.png)
 
+### UML Diagram of the project
+
+![FlightGear UML](https://user-images.githubusercontent.com/72696075/114566337-d47f7c80-9c7a-11eb-82d1-84b8367a3c06.png)
+
 Enjoy your flight!
