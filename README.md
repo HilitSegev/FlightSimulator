@@ -41,14 +41,14 @@ After uploading the CSV file, when you're ready to fly- fasten your seatbelts an
 Using the playback bar you are able to control the exact playback speed in which the flight will be executed.
 Further more you can use the bar below to reset/stop/continue the flight and change the location of the bar pointer to jump to a specific time in the flight.
 
-![playback bar](https://user-images.githubusercontent.com/73164258/114630983-695a9800-9cc4-11eb-8b7b-db060349cd6b.png)
+![5676](https://user-images.githubusercontent.com/73164258/114635251-002b5280-9ccd-11eb-855e-6a9a71266294.png)
 
 ### Main rudders
 In the buttom left side of the application, you are able to view all the main rudders with their current values updated by time.
 You can view the rudder value and the two throttles values with sliders that indicate their values. 
 For the aileron and elevetor values you can view the joystick- its up and down motions indicates the elevator value and its left and right motions indicates the aileron.
 
-![joystick](https://user-images.githubusercontent.com/73164258/114631904-28638300-9cc6-11eb-8580-4ac5a9606f95.png)
+![55555](https://user-images.githubusercontent.com/73164258/114635274-0d484180-9ccd-11eb-9532-25bb8d1a1ef4.png)
 
 ### Playback speed
 When watching the simulator you can choose to watch some parts faster and other parts slower.
@@ -61,14 +61,14 @@ Move the playbackspeed slider in the buttom of the application- right for faster
 You can also view other data values of the flight- altimeter, airspeed, flight direction, pitch, roll and yaw.
 In the left side of the application you can view all the exact values of this parameters changes by time.
 
-![otherdata](https://user-images.githubusercontent.com/73164258/114632438-5eedcd80-9cc7-11eb-8363-b989f91408af.png)
+![3424](https://user-images.githubusercontent.com/73164258/114635329-29e47980-9ccd-11eb-96d6-cac6a4e54eb1.png)
 
 ### Chosen feature graph
 Right in the middle of the appliction you can choose any feature you want from the list and view its graph.
 The X axis indicates the time and the Y axis indicates the value of the chosen feature.
 The graph right next to the list will be the graph of the feature you chose.
 
-![graph1](https://user-images.githubusercontent.com/73164258/114632704-e3405080-9cc7-11eb-9bbc-f98b781b5d5b.png)
+![22](https://user-images.githubusercontent.com/73164258/114635348-3799ff00-9ccd-11eb-8153-459803f261a2.png)
 
 ### Correlative graph
 Pay attention to read the feature above.
@@ -76,7 +76,7 @@ The right graph in the top will display the most correlated feature for the feat
 Notice we set no minimum for a correlation- the best correlated feature will be displayed and will be defined as the correlated feature.
 The X axis indicates the time and the Y axis indicates the value of the most correlated feature for the chosen feature from the list.
 
-![graph2](https://user-images.githubusercontent.com/73164258/114633121-a759bb00-9cc8-11eb-982c-23d120159846.png)
+![31241](https://user-images.githubusercontent.com/73164258/114635376-45e81b00-9ccd-11eb-8fa9-ac2c7fbe13c1.png)
 
 ### Regression line
 Pay attention to read the two features above.
@@ -86,7 +86,7 @@ The black points in the graph indicates both the chosen feature and the most cor
 The orange points in the graph indicates the points of the last 30 seconds of the flight- you can enjoy watching it move with time.
 An explanation of the red points is in the feature below.
 
-![graph3](https://user-images.githubusercontent.com/73164258/114633614-8ba2e480-9cc9-11eb-9d37-cc921203b7bf.png)
+![8888](https://user-images.githubusercontent.com/73164258/114635393-4ed8ec80-9ccd-11eb-906c-0be13b5db052.png)
 
 ### Anomalies graph
 Pay attention to read the three features above.
@@ -106,7 +106,8 @@ You can view the anomalies in the exact same graph from the feature above- the a
 Notice! To make it easiear following the anomalies, the list in the left side of the graph will display the time of the anomalies and the anomaly itself.
 You can choose an anomaly from the list and go to the exact time the anomaly has happened in the flight.
 
-![graph4](https://user-images.githubusercontent.com/73164258/114634388-16381380-9ccb-11eb-8479-2f9762c7d383.png)
+![99999](https://user-images.githubusercontent.com/73164258/114635415-5a2c1800-9ccd-11eb-802d-6442f9ad728c.png)
+
 
 
 ## UML Diagram of the project
