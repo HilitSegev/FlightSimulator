@@ -20,12 +20,12 @@ On startup, the main window will be presented:
 ![startup app](https://user-images.githubusercontent.com/73164258/114630182-af166100-9cc2-11eb-907c-8fc7e0b58f17.png)
 
 This is the window which will be used in order to control the simulator:
-The left-hand side is a live updating multiple graphs for each data member according to the data of the flight.
-You will also find in the buttom left side the data of the dashboard of the plane e.g. the altimeter/airspeed/flight direction/pitch/roll/yaw.
-The right-hand side shows the status of the controllers of the plane, e.g. the Joystick and the rudder/throttle data.
+The right-hand side is a live updating multiple graphs for each data member according to the data of the flight.
+You will also find in the left side the data of the dashboard of the plane e.g. the altimeter/airspeed/flight direction/pitch/roll/yaw.
+The left-hand side shows the status of the controllers of the plane, e.g. the Joystick and the rudder/throttle data.
 
 ## Our Features
-There are 9 main features for our simulator:
+There are 9 main features of our simulator:
 
 ### Flying the aircraft
 First, run the simulator, click on the 'Fly!' icon in the bottom left corner.
@@ -34,7 +34,7 @@ Make sure the playback_small.xml file is in the right place with the right headl
 
 ![flyandtrain](https://user-images.githubusercontent.com/73164258/114630490-63b08280-9cc3-11eb-8421-25e9b13e92f3.png)
 
-After uploading the CSV file, when you're ready to fly- fasten your seatbelts and click the PLAY buttom on the playback bar:
+After uploading the CSV file, when you're ready to fly- fasten your seatbelts and click the PLAY button on the playback bar:
 ![Play](https://user-images.githubusercontent.com/73164258/114630923-48924280-9cc4-11eb-86a3-dafe1ba88686.png)
 
 ### Controlling the flight investigation
@@ -43,8 +43,73 @@ Further more you can use the bar below to reset/stop/continue the flight and cha
 
 ![playback bar](https://user-images.githubusercontent.com/73164258/114630983-695a9800-9cc4-11eb-8b7b-db060349cd6b.png)
 
+### Main rudders
+In the buttom left side of the application, you are able to view all the main rudders with their current values updated by time.
+You can view the rudder value and the two throttles values with sliders that indicate their values. 
+For the aileron and elevetor values you can view the joystick- its up and down motions indicates the elevator value and its left and right motions indicates the aileron.
 
-### UML Diagram of the project
+![joystick](https://user-images.githubusercontent.com/73164258/114631904-28638300-9cc6-11eb-8580-4ac5a9606f95.png)
+
+### Playback speed
+When watching the simulator you can choose to watch some parts faster and other parts slower.
+The default speed is 10Hz.
+Move the playbackspeed slider in the buttom of the application- right for faster and left for slower.
+
+![playback speed](https://user-images.githubusercontent.com/73164258/114632164-c2c3c680-9cc6-11eb-8db1-2002c4e0668e.png)
+
+### Data
+You can also view other data values of the flight- altimeter, airspeed, flight direction, pitch, roll and yaw.
+In the left side of the application you can view all the exact values of this parameters changes by time.
+
+![otherdata](https://user-images.githubusercontent.com/73164258/114632438-5eedcd80-9cc7-11eb-8363-b989f91408af.png)
+
+### Chosen feature graph
+Right in the middle of the appliction you can choose any feature you want from the list and view its graph.
+The X axis indicates the time and the Y axis indicates the value of the chosen feature.
+The graph right next to the list will be the graph of the feature you chose.
+
+![graph1](https://user-images.githubusercontent.com/73164258/114632704-e3405080-9cc7-11eb-9bbc-f98b781b5d5b.png)
+
+### Correlative graph
+Pay attention to read the feature above.
+The right graph in the top will display the most correlated feature for the feature you chose from the list.
+Notice we set no minimum for a correlation- the best correlated feature will be displayed and will be defined as the correlated feature.
+The X axis indicates the time and the Y axis indicates the value of the most correlated feature for the chosen feature from the list.
+
+![graph2](https://user-images.githubusercontent.com/73164258/114633121-a759bb00-9cc8-11eb-982c-23d120159846.png)
+
+### Regression line
+Pay attention to read the two features above.
+In the next graph you are going to view the regression line of the two features (the feature which is chosen from the list and its most correlative feature).
+The green line in the graph indicates of the regression line
+The black points in the graph indicates both the chosen feature and the most correlative feature points.
+The orange points in the graph indicates the points of the last 30 seconds of the flight- you can enjoy watching it move with time.
+An explanation of the red points is in the feature below.
+
+![graph3](https://user-images.githubusercontent.com/73164258/114633614-8ba2e480-9cc9-11eb-9d37-cc921203b7bf.png)
+
+### Anomalies graph
+Pay attention to read the three features above.
+You can choose to add another CSV file and detect anomalies.
+The first CSV file you uploaded will be the train file and the next CSV will be for detect anomalies in it.
+![anomalies](https://user-images.githubusercontent.com/73164258/114633886-1257c180-9cca-11eb-9bfd-4707c5abeb29.png)
+
+Pay attention there is no default algorithm for detecting anomalies. 
+You will also need to upload a .dll file of the algorithm you will to use.
+In the plugins folder you can use one of our two .dll files- FirstDLL is for detecting anomalies using regression line and SecondDLL is for detecting anomalies using a circle.
+You will need to upload the .dll file to the appliction.
+![dll](https://user-images.githubusercontent.com/73164258/114634085-78dcdf80-9cca-11eb-91ee-ed2abd55cfeb.png)
+
+Our application will use the .dll file and display the anomalies returned from the .dll.
+You can view the anomalies in the exact same graph from the feature above- the anomalies are in red points.
+
+Notice! To make it easiear following the anomalies, the list in the left side of the graph will display the time of the anomalies and the anomaly itself.
+You can choose an anomaly from the list and go to the exact time the anomaly has happened in the flight.
+
+![graph4](https://user-images.githubusercontent.com/73164258/114634388-16381380-9ccb-11eb-8479-2f9762c7d383.png)
+
+
+## UML Diagram of the project
 
 ![FlightGear UML](https://user-images.githubusercontent.com/72696075/114566337-d47f7c80-9c7a-11eb-82d1-84b8367a3c06.png)
 
