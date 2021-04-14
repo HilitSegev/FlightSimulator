@@ -24,7 +24,7 @@ The right-hand side is a live updating multiple graphs for each data member acco
 You will also find in the left side the data of the dashboard of the plane e.g. the altimeter/airspeed/flight direction/pitch/roll/yaw.
 The left-hand side shows the status of the controllers of the plane, e.g. the Joystick and the rudder/throttle data.
 
-## Our Features
+## Application Features
 There are 9 main features of our simulator:
 
 ### Flying the aircraft
